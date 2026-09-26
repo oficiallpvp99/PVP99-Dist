@@ -1,0 +1,347 @@
+{
+  "looting": {
+    "items": [
+      {
+        "count": 1,
+        "id": 3420
+      },
+      {
+        "count": 1,
+        "id": 3281
+      },
+      {
+        "count": 1,
+        "id": 3320
+      },
+      {
+        "count": 1,
+        "id": 3035
+      },
+      {
+        "count": 1,
+        "id": 7418
+      },
+      {
+        "count": 1,
+        "id": 9057
+      },
+      {
+        "count": 1,
+        "id": 3028
+      },
+      {
+        "count": 1,
+        "id": 282
+      },
+      {
+        "count": 1,
+        "id": 3030
+      },
+      {
+        "count": 1,
+        "id": 22730
+      },
+      {
+        "count": 1,
+        "id": 3032
+      },
+      {
+        "count": 1,
+        "id": 3033
+      },
+      {
+        "count": 1,
+        "id": 7382
+      },
+      {
+        "count": 1,
+        "id": 3360
+      },
+      {
+        "count": 1,
+        "id": 22726
+      },
+      {
+        "count": 1,
+        "id": 22866
+      },
+      {
+        "count": 1,
+        "id": 22727
+      },
+      {
+        "count": 1,
+        "id": 3063
+      },
+      {
+        "count": 1,
+        "id": 22728
+      },
+      {
+        "count": 1,
+        "id": 8082
+      },
+      {
+        "count": 1,
+        "id": 8094
+      },
+      {
+        "count": 1,
+        "id": 3414
+      },
+      {
+        "count": 1,
+        "id": 3364
+      },
+      {
+        "count": 1,
+        "id": 3366
+      },
+      {
+        "count": 1,
+        "id": 22867
+      },
+      {
+        "count": 1,
+        "id": 3554
+      },
+      {
+        "count": 1,
+        "id": 3048
+      },
+      {
+        "count": 1,
+        "id": 7414
+      },
+      {
+        "count": 1,
+        "id": 7413
+      },
+      {
+        "count": 1,
+        "id": 7388
+      },
+      {
+        "count": 1,
+        "id": 9058
+      },
+      {
+        "count": 1,
+        "id": 23529
+      },
+      {
+        "count": 1,
+        "id": 16126
+      },
+      {
+        "count": 1,
+        "id": 9635
+      },
+      {
+        "count": 1,
+        "id": 817
+      },
+      {
+        "count": 1,
+        "id": 818
+      },
+      {
+        "count": 1,
+        "id": 23542
+      },
+      {
+        "count": 1,
+        "id": 676
+      },
+      {
+        "count": 1,
+        "id": 5922
+      },
+      {
+        "count": 1,
+        "id": 16120
+      },
+      {
+        "count": 1,
+        "id": 675
+      },
+      {
+        "count": 1,
+        "id": 826
+      },
+      {
+        "count": 1,
+        "id": 3067
+      },
+      {
+        "count": 1,
+        "id": 24961
+      },
+      {
+        "count": 1,
+        "id": 813
+      },
+      {
+        "count": 1,
+        "id": 3318
+      },
+      {
+        "count": 1,
+        "id": 815
+      },
+      {
+        "count": 1,
+        "id": 8083
+      },
+      {
+        "count": 1,
+        "id": 829
+      },
+      {
+        "count": 1,
+        "id": 16125
+      },
+      {
+        "count": 1,
+        "id": 3071
+      },
+      {
+        "count": 1,
+        "id": 823
+      },
+      {
+        "count": 1,
+        "id": 824
+      },
+      {
+        "count": 1,
+        "id": 830
+      },
+      {
+        "count": 1,
+        "id": 23544
+      },
+      {
+        "count": 1,
+        "id": 3344
+      },
+      {
+        "count": 1,
+        "id": 8093
+      },
+      {
+        "count": 1,
+        "id": 3073
+      },
+      {
+        "count": 1,
+        "id": 51443
+      },
+      {
+        "count": 1,
+        "id": 22194
+      },
+      {
+        "count": 7,
+        "id": 51428
+      },
+      {
+        "count": 10,
+        "id": 25737
+      },
+      {
+        "count": 13,
+        "id": 16127
+      },
+      {
+        "count": 4,
+        "id": 51423
+      },
+      {
+        "count": 1,
+        "id": 811
+      },
+      {
+        "count": 1,
+        "id": 25698
+      },
+      {
+        "count": 1,
+        "id": 22193
+      },
+      {
+        "count": 1,
+        "id": 51420
+      },
+      {
+        "count": 3,
+        "id": 51422
+      },
+      {
+        "count": 2,
+        "id": 51426
+      },
+      {
+        "count": 1,
+        "id": 3369
+      },
+      {
+        "count": 1,
+        "id": 3026
+      },
+      {
+        "count": 1,
+        "id": 51425
+      },
+      {
+        "count": 1,
+        "id": 51427
+      },
+      {
+        "count": 1,
+        "id": 51424
+      }
+    ],
+    "maxDanger": 10,
+    "minCapacity": 100,
+    "containers": [
+      {
+        "count": 1,
+        "id": 2854
+      }
+    ],
+    "everyItem": false
+  },
+  "targeting": [
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 2,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^headwalker$|^crusader$|^lion hydra$|^bluebeak$|^bramble wyrmling$|^hawk hopper$",
+      "chase": true,
+      "priority": 1,
+      "keepDistance": false,
+      "closeLure": false,
+      "danger": 1,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "dynamicLureDelay": false,
+      "dynamicLure": false,
+      "faceMonster": false,
+      "lureCavebot": true,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Headwalker,Crusader,Lion Hydra,Bluebeak,Bramble Wyrmling,Hawk Hopper",
+      "rpSafe": false
+    }
+  ]
+}
