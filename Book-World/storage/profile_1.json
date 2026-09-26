@@ -1,0 +1,1692 @@
+{
+  "hpitem1": {
+    "max": 62,
+    "title": "HP%",
+    "subType": 0,
+    "item": 23375,
+    "min": 1,
+    "on": true
+  },
+  "caveBotTasker": {
+    "max": 800,
+    "monster": "serpent spawn",
+    "inProgress": true,
+    "count": 0,
+    "taskName": "serpent spawns",
+    "monster2": ""
+  },
+  "specialDeposit": {
+    "height": 380,
+    "items": [
+
+    ]
+  },
+  "ingame_hotkeys": "",
+  "healing2": {
+    "max": 50,
+    "title": "HP%",
+    "on": false,
+    "min": 0,
+    "text": "exura gran"
+  },
+  "analyzers": {
+    "lootChannel": false,
+    "customPrices": [
+
+    ],
+    "trackedLoot": [
+
+    ],
+    "trackedBoss": [
+
+    ],
+    "rarityFrames": true,
+    "outfits": {
+      "Deepling Spellsinger": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 443,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Quill": {
+        "addons": 0,
+        "feet": 114,
+        "type": 1848,
+        "body": 127,
+        "legs": 115,
+        "auxType": 0,
+        "mount": 0,
+        "head": 96
+      },
+      "Serpent Spawn": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 220,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Eternal Guardian": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 345,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Sir Leonard": {
+        "addons": 3,
+        "feet": 76,
+        "type": 1847,
+        "body": 38,
+        "legs": 101,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Swampling": {
+        "addons": 0,
+        "feet": 0,
+        "type": 535,
+        "body": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Tarantula": {
+        "addons": 0,
+        "feet": 0,
+        "type": 219,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Destroyer": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 236,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Crazed Winter Rearguard": {
+        "addons": 0,
+        "feet": 85,
+        "mount": 0,
+        "body": 19,
+        "type": 1136,
+        "auxType": 0,
+        "legs": 3,
+        "head": 78
+      },
+      "Crazed Summer Vanguard": {
+        "addons": 1,
+        "feet": 82,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1137,
+        "body": 113,
+        "legs": 3,
+        "head": 78
+      },
+      "Insane Siren": {
+        "addons": 3,
+        "feet": 19,
+        "legs": 79,
+        "auxType": 0,
+        "mount": 0,
+        "body": 94,
+        "type": 1136,
+        "head": 78
+      },
+      "Trainer": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1078,
+        "head": 0
+      },
+      "Faun": {
+        "addons": 0,
+        "feet": 94,
+        "legs": 95,
+        "body": 115,
+        "mount": 0,
+        "auxType": 0,
+        "type": 980,
+        "head": 81
+      },
+      "Tiger": {
+        "addons": 0,
+        "feet": 0,
+        "type": 125,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Water Buffalo": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 523,
+        "head": 0
+      },
+      "Mooh'Tah Warrior": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 611,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Spider": {
+        "addons": 0,
+        "feet": 0,
+        "type": 30,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Rat": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 21,
+        "head": 0
+      },
+      "Mitmah Scout": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1709,
+        "head": 0
+      },
+      "Frost Troll": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 53,
+        "head": 0
+      },
+      "Cave Rat": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 56,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Iks Aucar": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1587,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Carniphila": {
+        "addons": 0,
+        "feet": 0,
+        "type": 120,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Crazed Winter Vanguard": {
+        "addons": 1,
+        "feet": 1,
+        "type": 1136,
+        "auxType": 0,
+        "legs": 9,
+        "body": 68,
+        "mount": 0,
+        "head": 78
+      },
+      "Thanatursus": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 1134,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Deepling Warrior": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 441,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Polar Bear": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 42,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Black Sphinx Acolyte": {
+        "addons": 0,
+        "feet": 114,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1386,
+        "body": 114,
+        "legs": 94,
+        "head": 114
+      },
+      "Iks Yapunac": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1702,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Headwalker": {
+        "addons": 0,
+        "feet": 61,
+        "type": 1856,
+        "body": 80,
+        "legs": 79,
+        "auxType": 0,
+        "mount": 0,
+        "head": 94
+      },
+      "Terror Bird": {
+        "addons": 0,
+        "feet": 0,
+        "type": 218,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Winter Wolf": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 52,
+        "head": 0
+      },
+      "Crusader": {
+        "addons": 0,
+        "feet": 78,
+        "type": 1847,
+        "body": 0,
+        "legs": 94,
+        "auxType": 0,
+        "mount": 0,
+        "head": 95
+      },
+      "Dark Faun": {
+        "addons": 0,
+        "feet": 94,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 95,
+        "type": 980,
+        "head": 94
+      },
+      "Lion Hydra": {
+        "addons": 0,
+        "feet": 0,
+        "type": 1859,
+        "body": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Bug": {
+        "addons": 0,
+        "feet": 0,
+        "type": 45,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Medusa": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 330,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Hellhound": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 240,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Cursed Ape": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1592,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Ahau": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1591,
+        "head": 0
+      },
+      "Boogy": {
+        "addons": 0,
+        "feet": 0,
+        "type": 981,
+        "body": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Lacewing Moth": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 1148,
+        "head": 0
+      },
+      "Dog": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 32,
+        "head": 0
+      },
+      "Bat": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 122,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Acid Blob": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 314,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Badger": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 105,
+        "head": 0
+      },
+      "Execowtioner": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 609,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Bluebeak": {
+        "addons": 0,
+        "feet": 0,
+        "type": 1849,
+        "body": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Giant Spider": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 38,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Centipede": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 124,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Butterfly": {
+        "addons": 0,
+        "feet": 0,
+        "type": 227,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Swan Maiden": {
+        "addons": 0,
+        "feet": 59,
+        "legs": 114,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 138,
+        "head": 0
+      },
+      "Twisted Pooka": {
+        "addons": 0,
+        "feet": 0,
+        "type": 978,
+        "body": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Cobra": {
+        "addons": 0,
+        "feet": 0,
+        "type": 81,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Grim Reaper": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 300,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Magonsom": {
+        "addons": 0,
+        "feet": 0,
+        "type": 128,
+        "body": 0,
+        "legs": 0,
+        "auxType": 13,
+        "mount": 0,
+        "head": 0
+      },
+      "Pooka": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 977,
+        "head": 0
+      },
+      "Snake": {
+        "addons": 0,
+        "feet": 0,
+        "type": 28,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Amazon": {
+        "addons": 0,
+        "feet": 132,
+        "legs": 114,
+        "auxType": 0,
+        "mount": 0,
+        "body": 120,
+        "type": 137,
+        "head": 113
+      },
+      "Kongra": {
+        "addons": 0,
+        "feet": 0,
+        "type": 116,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Iks Pututu": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1589,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Bramble Wyrmling": {
+        "addons": 3,
+        "feet": 53,
+        "type": 1850,
+        "body": 25,
+        "legs": 52,
+        "auxType": 0,
+        "mount": 0,
+        "head": 44
+      },
+      "Iks Chuka": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1588,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Hawk Hopper": {
+        "addons": 0,
+        "feet": 61,
+        "type": 1858,
+        "body": 80,
+        "legs": 79,
+        "auxType": 0,
+        "mount": 0,
+        "head": 94
+      },
+      "Dark Torturer": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 234,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Soul-Broken Harbinger": {
+        "addons": 3,
+        "feet": 84,
+        "type": 1137,
+        "auxType": 0,
+        "legs": 16,
+        "body": 38,
+        "mount": 0,
+        "head": 59
+      },
+      "Nymph": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 989,
+        "head": 0
+      },
+      "Arachnophobica": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 1135,
+        "head": 0
+      },
+      "Panda": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 123,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Wasp": {
+        "addons": 0,
+        "feet": 0,
+        "type": 44,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Demon Skeleton": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 37,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Barbarian Headsplitter": {
+        "addons": 0,
+        "feet": 132,
+        "type": 253,
+        "auxType": 0,
+        "legs": 119,
+        "body": 105,
+        "mount": 0,
+        "head": 115
+      },
+      "Barbarian Skullhunter": {
+        "addons": 0,
+        "feet": 114,
+        "legs": 77,
+        "auxType": 0,
+        "mount": 0,
+        "body": 77,
+        "type": 254,
+        "head": 0
+      },
+      "Fire Elemental": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 49,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Adult Goanna": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1195,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Poison Spider": {
+        "addons": 0,
+        "feet": 0,
+        "type": 36,
+        "body": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Azrakhael Vhalzor": {
+        "addons": 3,
+        "feet": 94,
+        "mount": 738,
+        "body": 114,
+        "type": 1353,
+        "auxType": 0,
+        "legs": 114,
+        "head": 114
+      },
+      "Mammoth": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 199,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Bonebeast": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 101,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "War Wolf": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 3,
+        "head": 0
+      },
+      "Hydra": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 121,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Crazed Summer Rearguard": {
+        "addons": 0,
+        "feet": 120,
+        "legs": 3,
+        "body": 113,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1136,
+        "head": 78
+      },
+      "Burning Gladiator": {
+        "addons": 1,
+        "feet": 38,
+        "mount": 0,
+        "auxType": 0,
+        "type": 541,
+        "body": 132,
+        "legs": 38,
+        "head": 114
+      }
+    }
+  },
+  "friendName": "Friend Name",
+  "manaitem2": {
+    "max": 50,
+    "title": "MP%",
+    "subType": 0,
+    "item": 3157,
+    "min": 0,
+    "on": false
+  },
+  "checkVersion": 1790403568,
+  "manaitem1": {
+    "max": 15,
+    "title": "MP%",
+    "subType": 0,
+    "item": 53164,
+    "min": 0,
+    "on": true
+  },
+  "hpitem2": {
+    "max": 50,
+    "title": "HP%",
+    "subType": 0,
+    "item": 239,
+    "min": 0,
+    "on": false
+  },
+  "newHealer": {
+    "settings": [
+      {
+        "type": "HealItem",
+        "value": 268,
+        "text": "Mana Item "
+      },
+      {
+        "type": "HealScroll",
+        "value": 6,
+        "text": "Item Range: "
+      },
+      {
+        "type": "HealItem",
+        "value": 3160,
+        "text": "Health Item "
+      },
+      {
+        "type": "HealScroll",
+        "value": 2,
+        "text": "Mas Res Players: "
+      },
+      {
+        "type": "HealScroll",
+        "value": 80,
+        "text": "Heal Friend at: "
+      },
+      {
+        "type": "HealScroll",
+        "value": 80,
+        "text": "Use Gran Sio at: "
+      },
+      {
+        "type": "HealScroll",
+        "value": 80,
+        "text": "Min Player HP%: "
+      },
+      {
+        "type": "HealScroll",
+        "value": 50,
+        "text": "Min Player MP%: "
+      }
+    ],
+    "priorities": [
+      {
+        "custom": true,
+        "enabled": false,
+        "name": "Custom Spell"
+      },
+      {
+        "strong": true,
+        "enabled": true,
+        "name": "Exura Gran Sio"
+      },
+      {
+        "normal": true,
+        "enabled": true,
+        "name": "Exura Sio"
+      },
+      {
+        "enabled": true,
+        "name": "Exura Gran Mas Res",
+        "area": true
+      },
+      {
+        "health": true,
+        "enabled": true,
+        "name": "Health Item"
+      },
+      {
+        "enabled": true,
+        "name": "Mana Item",
+        "mana": true
+      }
+    ],
+    "customPlayers": [
+
+    ],
+    "groups": [
+
+    ],
+    "enabled": false,
+    "conditions": {
+      "druids": false,
+      "knights": true,
+      "friends": false,
+      "botserver": false,
+      "paladins": true,
+      "sorcerers": false,
+      "party": true,
+      "guild": false
+    },
+    "vocations": [
+
+    ]
+  },
+  "autoTradeMessage": "I'm using OTClientV8!",
+  "friend1Name": "Friend Name",
+  "BotServerChannel": "5795770900493",
+  "combobot": {
+    "attackSpellEnabled": false,
+    "attackLeaderTargetEnabled": false,
+    "onShootEnabled": false,
+    "item": 3155,
+    "serverLeaderTarget": false,
+    "onCastEnabled": false,
+    "serverEnabled": false,
+    "attack": "",
+    "onSayEnabled": false,
+    "sayLeader": "",
+    "spell": "",
+    "shootLeader": "",
+    "attackItemToggle": false,
+    "followLeaderEnabled": false,
+    "commandsEnabled": true,
+    "sayPhrase": "",
+    "serverTriggers": true,
+    "serverLeader": "",
+    "enabled": false,
+    "follow": "",
+    "castLeader": ""
+  },
+  "extras": {
+    "rope": 3003,
+    "pathfinding": true,
+    "bless": true,
+    "machete": 3308,
+    "separatePm": false,
+    "highlightTarget": true,
+    "gotoMaxDistance": 30,
+    "holdWgHot": "F6",
+    "holdMwall": false,
+    "checkPlayer": true,
+    "looting": 30,
+    "suppliesControl": true,
+    "useAll": "space",
+    "joinBot": false,
+    "lootLast": true,
+    "holdMwHot": "F5",
+    "nextBackpack": true,
+    "shovel": 3457,
+    "lootDelay": 150,
+    "title": true,
+    "autoOpenDoors": false,
+    "stake": false,
+    "scythe": 3453,
+    "oberon": false,
+    "huntRoutes": 50,
+    "antiKick": true,
+    "talkDelay": 1000,
+    "reachable": false,
+    "killUnder": 1,
+    "reUse": false,
+    "height": 360,
+    "timers": false
+  },
+  "_macros": {
+    "": false,
+    "SPAM DASH": false,
+    "Cast Food": false,
+    "Eat Food": true,
+    "PVP99 NPC": true,
+    "Stack items": true,
+    "Exchange money": true,
+    "Exevo Gran Mas Frigo": false,
+    "EK Rotacao": true
+  },
+  "autoEquip": [
+    {
+      "item1": 3052,
+      "title": "Auto Equip",
+      "item2": 3089,
+      "on": false,
+      "slot": 9
+    },
+    {
+      "item1": 3084,
+      "title": "Auto Equip",
+      "item2": 3084,
+      "on": true,
+      "slot": 2
+    }
+  ],
+  "dropper": {
+    "enabled": false,
+    "trashItems": [
+      {
+        "id": 283,
+        "count": 1
+      },
+      {
+        "id": 284,
+        "count": 1
+      },
+      {
+        "id": 285,
+        "count": 1
+      }
+    ],
+    "useItems": [
+      {
+        "id": 21203,
+        "count": 1
+      },
+      {
+        "id": 14758,
+        "count": 1
+      }
+    ],
+    "capItems": [
+      {
+        "id": 21175,
+        "count": 1
+      }
+    ]
+  },
+  "cityTravel": {
+    "enabled": false
+  },
+  "caveBot": {
+    "backOffline": false,
+    "backTrainers": false,
+    "forceRefill": false,
+    "backStop": false
+  },
+  "cavebotSell": [
+    {
+      "count": 1,
+      "id": 23544
+    },
+    {
+      "count": 1,
+      "id": 3081
+    },
+    {
+      "count": 1,
+      "id": 3003
+    },
+    {
+      "count": 1,
+      "id": 16277
+    },
+    {
+      "count": 1,
+      "id": 3097
+    },
+    {
+      "count": 2,
+      "id": 3032
+    }
+  ],
+  "bestHit": 1869,
+  "afkMsg": "Script by pvp99",
+  "foodItems": [
+    {
+      "count": 1,
+      "id": 3582
+    },
+    {
+      "count": 1,
+      "id": 3577
+    },
+    {
+      "count": 1,
+      "id": 3607
+    },
+    {
+      "count": 1,
+      "id": 3585
+    },
+    {
+      "count": 1,
+      "id": 3592
+    },
+    {
+      "count": 1,
+      "id": 3600
+    },
+    {
+      "count": 1,
+      "id": 3601
+    },
+    {
+      "count": 2,
+      "id": 3602
+    },
+    {
+      "count": 2,
+      "id": 3578
+    }
+  ],
+  "_icons": {
+    "ekAureraAttack": {
+      "y": 0.53186813186813,
+      "x": 0.0032967032967033
+    },
+    "tI": {
+      "y": 0.40085287846482,
+      "x": 0.070021881838074
+    },
+    "(RP) PvP": {
+      "y": 0.14883720930233,
+      "x": 0.55154639175258,
+      "enabled": true
+    },
+    "SD": {
+      "y": 0.45507246376812,
+      "x": 0.054945054945055,
+      "enabled": false
+    },
+    "MP": {
+      "y": 0.26652452025586,
+      "x": 0.075757575757576,
+      "enabled": true
+    },
+    "cr": {
+      "y": 0.14418604651163,
+      "x": 0.078512396694215,
+      "enabled": false
+    },
+    "monk": {
+      "y": 0.25,
+      "x": 0.01,
+      "enabled": true
+    },
+    "ekAureraRotation": {
+      "y": 0.68571428571429,
+      "x": 0.049450549450549,
+      "enabled": true
+    },
+    "cI": {
+      "y": 0.40085287846482,
+      "x": 0
+    },
+    "exori2": {
+      "y": 0.25217391304348,
+      "x": 0.41978021978022,
+      "enabled": false
+    },
+    "CUR": {
+      "y": 0.57782515991471,
+      "x": 0.10714285714286,
+      "enabled": false
+    },
+    "heals": {
+      "y": 0.25217391304348,
+      "x": 0.57802197802198,
+      "enabled": true
+    },
+    "exori": {
+      "y": 0,
+      "x": 0.087809917355372,
+      "enabled": true
+    },
+    "Co": {
+      "y": 0.10660980810235,
+      "x": 0,
+      "enabled": false
+    },
+    "ekAureraDefense": {
+      "y": 0.52307692307692,
+      "x": 0.069230769230769
+    },
+    "AVA": {
+      "y": 0.8,
+      "x": 0.046153846153846,
+      "enabled": true
+    },
+    "HP": {
+      "y": 0.27078891257996,
+      "x": 0.0021645021645022,
+      "enabled": false
+    },
+    "exori1": {
+      "y": 0.027906976744186,
+      "x": 0.94834710743802,
+      "enabled": false
+    },
+    "teste": {
+      "y": 0.45,
+      "x": 0.01,
+      "enabled": false
+    },
+    "AtkAll": {
+      "y": 0.13006396588486,
+      "x": 0.069264069264069,
+      "enabled": true
+    },
+    "RG": {
+      "y": 0.14651162790698,
+      "x": 0.11776859504132,
+      "enabled": false
+    }
+  },
+  "_configs": {
+    "targetbot_configs": {
+      "enabled": false,
+      "selected": "Monsterbook"
+    },
+    "cavebot_configs": {
+      "enabled": false,
+      "selected": "book_4"
+    }
+  },
+  "healing1": {
+    "max": 90,
+    "title": "HP%",
+    "on": true,
+    "min": 0,
+    "text": "exura med ico"
+  },
+  "bestHeal": 1125,
+  "EquipperPanel": {
+    "enabled": false,
+    "bosses": [
+
+    ],
+    "rules": [
+      {
+        "data": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3097,
+          0
+        ],
+        "mainCondition": 18,
+        "optionalCondition": 1,
+        "visible": true,
+        "mainValue": 0,
+        "enabled": true,
+        "name": "invisivel",
+        "relation": "-"
+      },
+      {
+        "relation": "-",
+        "mainCondition": 8,
+        "optionalCondition": 9,
+        "mainValue": "Crazed Summer Vanguard",
+        "visible": true,
+        "enabled": true,
+        "name": "tira",
+        "data": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "pushmax": {
+    "pushMaxRuneId": 3188,
+    "mwallBlockId": 2128,
+    "pushDelay": 1060,
+    "enabled": false,
+    "pushMaxKey": "PageUp"
+  },
+  "BOTserver": {
+    "manaInfo": true,
+    "mwallInfo": true,
+    "mwalls": [
+
+    ],
+    "outfit": false,
+    "broadcasts": true,
+    "vocation": true
+  },
+  "trader": {
+    "enabled": false
+  },
+  "moneyItems": [
+    {
+      "id": 3031,
+      "count": 1
+    },
+    {
+      "id": 3035,
+      "count": 1
+    },
+    {
+      "id": 3043,
+      "count": 83
+    }
+  ],
+  "alarms": {
+    "privateMsg": [
+
+    ],
+    "customMessage": {
+      "value": ""
+    },
+    "flashClient": [
+
+    ],
+    "lowMana": {
+      "value": 20
+    },
+    "creatureDetected": [
+
+    ],
+    "damageTaken": [
+
+    ],
+    "playerAttack": [
+
+    ],
+    "ignoreFriends": [
+
+    ],
+    "defaultMsg": [
+
+    ],
+    "creatureName": {
+      "value": ""
+    },
+    "lowHealth": {
+      "value": 20
+    },
+    "playerDetected": [
+
+    ]
+  },
+  "playerList": {
+    "enemyList": [
+
+    ],
+    "outfits": false,
+    "groupMembers": true,
+    "marks": false,
+    "highlight": false,
+    "blackList": [
+
+    ],
+    "friendList": [
+
+    ]
+  },
+  "ekAureraV1": {
+    "bashWords": "exori ico scu",
+    "gap": 2100,
+    "bashRange": 1,
+    "slamCD": 6,
+    "slamLevel": 30,
+    "slamWords": "exori scu",
+    "bashOn": true,
+    "bashLevel": 18,
+    "bashMana": 30,
+    "slamOn": true,
+    "shieldSpells": true,
+    "slamMana": 110,
+    "bashCD": 4,
+    "slamRange": 1
+  },
+  "renameContainers": {
+    "sort": true,
+    "forceOpen": true,
+    "list": [
+      {
+        "items": [
+          {
+            "id": 3161,
+            "count": 1
+          },
+          {
+            "id": 3180,
+            "count": 1
+          }
+        ],
+        "value": "Runes",
+        "item": 2866,
+        "min": true,
+        "enabled": true
+      },
+      {
+        "items": [
+          {
+            "count": 1,
+            "id": 3031
+          },
+          {
+            "count": 1,
+            "id": 3035
+          },
+          {
+            "count": 1,
+            "id": 3043
+          },
+          {
+            "count": 0,
+            "id": 3029
+          },
+          {
+            "count": 0,
+            "id": 9694
+          },
+          {
+            "count": 0,
+            "id": 3032
+          },
+          {
+            "count": 0,
+            "id": 10309
+          },
+          {
+            "count": 1,
+            "id": 3097
+          },
+          {
+            "count": 1,
+            "id": 16120
+          },
+          {
+            "count": 1,
+            "id": 676
+          },
+          {
+            "count": 1,
+            "id": 16126
+          },
+          {
+            "count": 1,
+            "id": 9635
+          },
+          {
+            "count": 6,
+            "id": 675
+          },
+          {
+            "count": 1,
+            "id": 24961
+          },
+          {
+            "count": 2,
+            "id": 5922
+          },
+          {
+            "count": 3,
+            "id": 25737
+          },
+          {
+            "count": 4,
+            "id": 9057
+          },
+          {
+            "count": 6,
+            "id": 51428
+          },
+          {
+            "count": 2,
+            "id": 16127
+          },
+          {
+            "count": 3,
+            "id": 51423
+          },
+          {
+            "count": 8,
+            "id": 22194
+          },
+          {
+            "count": 2,
+            "id": 22193
+          },
+          {
+            "count": 23,
+            "id": 3028
+          },
+          {
+            "count": 1,
+            "id": 51420
+          },
+          {
+            "count": 4,
+            "id": 51422
+          },
+          {
+            "count": 1,
+            "id": 51427
+          },
+          {
+            "count": 1,
+            "id": 51425
+          },
+          {
+            "count": 3,
+            "id": 51426
+          },
+          {
+            "count": 4,
+            "id": 282
+          },
+          {
+            "count": 1,
+            "id": 3026
+          },
+          {
+            "count": 1,
+            "id": 51424
+          }
+        ],
+        "value": "Money",
+        "item": 2871,
+        "min": false,
+        "enabled": true
+      },
+      {
+        "items": [
+
+        ],
+        "value": "Purse",
+        "item": 23396,
+        "min": true,
+        "enabled": true
+      },
+      {
+        "items": [
+
+        ],
+        "value": "Main Backpack",
+        "enabled": true,
+        "min": false,
+        "item": 5926
+      },
+      {
+        "items": [
+
+        ],
+        "value": "Main Backpack",
+        "enabled": true,
+        "min": false,
+        "item": 2860
+      },
+      {
+        "items": [
+          {
+            "id": 239,
+            "count": 100
+          },
+          {
+            "id": 237,
+            "count": 100
+          },
+          {
+            "id": 23375,
+            "count": 100
+          },
+          {
+            "id": 23374,
+            "count": 100
+          }
+        ],
+        "value": "potion",
+        "enabled": true,
+        "min": false,
+        "item": 2868
+      },
+      {
+        "items": [
+
+        ],
+        "value": "Main Backpack",
+        "enabled": true,
+        "min": false,
+        "item": 10324
+      }
+    ],
+    "purse": false,
+    "enabled": false,
+    "height": 170,
+    "lootBag": false
+  },
+  "customMessageAlert": "Insert Text Here",
+  "healing3": {
+    "max": 50,
+    "title": "HP%",
+    "on": false,
+    "min": 0,
+    "text": "exura vita"
+  }
+}
