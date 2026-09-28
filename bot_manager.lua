@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V10 NEON REGISTRA ATIVACAO
+-- PVP99 BOT MANAGER V11 MULTIPLAS KEYS
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -20,19 +20,24 @@ local AUTH_SIGNIN =
 
 local SETTINGS_EMAIL = "pvp99_bot_device_email"
 local SETTINGS_PASSWORD = "pvp99_bot_device_password"
-local SETTINGS_LICENSE = "pvp99_bot_license_key"
+
+-- V11: cada bot possui sua propria key.
+local SETTINGS_LICENSES = "pvp99_bot_license_keys"
+
+-- Compatibilidade com versões antigas que salvavam somente uma key.
+local LEGACY_SETTINGS_LICENSE = "pvp99_bot_license_key"
 
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV10")
+local old = root:recursiveGetChildById("pvp99BotManagerV11")
 if old then
   old:destroy()
 end
 
 g_ui.loadUIFromString([[
 PVP99PremiumRow < Panel
-  height: 40
+  height: 48
   margin-top: 3
   margin-bottom: 3
   background-color: #100b16
@@ -49,9 +54,20 @@ PVP99PremiumRow < Panel
   Label
     id: botName
     anchors.left: parent.left
-    anchors.verticalCenter: parent.verticalCenter
+    anchors.top: parent.top
     margin-left: 12
+    margin-top: 6
     color: #f09bff
+    font: verdana-11px-rounded
+    text-auto-resize: true
+
+  Label
+    id: botExpiry
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 12
+    margin-bottom: 5
+    color: #8f819b
     font: verdana-11px-rounded
     text-auto-resize: true
 
@@ -76,8 +92,8 @@ PVP99PremiumRow < Panel
     border-width: 1
     border-color: #9b52c7
 
-PVP99ManagerWindowV10 < MainWindow
-  id: pvp99BotManagerV10
+PVP99ManagerWindowV11 < MainWindow
+  id: pvp99BotManagerV11
   size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
@@ -109,7 +125,7 @@ PVP99ManagerWindowV10 < MainWindow
       anchors.bottom: parent.bottom
       anchors.horizontalCenter: parent.horizontalCenter
       margin-bottom: 9
-      text: LICENCA NAO ATIVADA
+      text: NENHUMA LICENCA ATIVA
       color: #cbb5d9
       font: verdana-11px-rounded
       text-auto-resize: true
@@ -235,7 +251,7 @@ PVP99ManagerWindowV10 < MainWindow
     border-color: #a950d1
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV10", root)
+local window = UI.createWindow("PVP99ManagerWindowV11", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
@@ -253,8 +269,13 @@ local auth = {
 
 local products = {}
 local rows = {}
-local activeLicense = nil
-local activeLicenseKey = nil
+
+-- Uma licença independente por produto/bot.
+local activeLicenses = {}
+local activeLicenseKeys = {}
+local licenseStates = {}
+local savedKeys = {}
+
 local busy = false
 
 local function setStatus(text, color)
@@ -299,29 +320,89 @@ local function formatExpiryDate(expiresAt)
   return "EXPIRA EM " .. days .. " DIAS"
 end
 
-local function refreshExpiryInfo()
+local function refreshLicenseSummary()
   if not expiryInfo then return end
 
-  if type(activeLicense) ~= "table" then
-    expiryInfo:setText("LICENCA NAO ATIVADA")
+  local count = 0
+
+  for productId, license in pairs(activeLicenses) do
+    if type(license) == "table"
+      and license.active == true then
+      count = count + 1
+    end
+  end
+
+  if count == 0 then
+    expiryInfo:setText("NENHUMA LICENCA ATIVA")
     expiryInfo:setColor("#cbb5d9")
-    return
-  end
-
-  local expiresAt = tonumber(activeLicense.expiresAt) or 0
-
-  if expiresAt > 0 and os.time and os.time() >= expiresAt then
-    expiryInfo:setText("LICENCA EXPIRADA")
-    expiryInfo:setColor("#ff6b8a")
-    return
-  end
-
-  expiryInfo:setText(formatExpiryDate(expiresAt))
-  if expiresAt == 0 then
+  elseif count == 1 then
+    expiryInfo:setText("1 BOT LIBERADO")
     expiryInfo:setColor("#64ffb5")
   else
-    expiryInfo:setColor("#ffd36b")
+    expiryInfo:setText(count .. " BOTS LIBERADOS")
+    expiryInfo:setColor("#64ffb5")
   end
+end
+
+local function loadSavedKeys()
+  local result = {}
+  local raw = g_settings.getString(SETTINGS_LICENSES)
+
+  if raw and raw ~= "" then
+    local ok, decoded = pcall(function()
+      return json.decode(raw)
+    end)
+
+    if ok and type(decoded) == "table" then
+      for productId, key in pairs(decoded) do
+        if type(productId) == "string"
+          and type(key) == "string"
+          and key ~= "" then
+          result[productId] = key
+        end
+      end
+    end
+  end
+
+  return result
+end
+
+local function saveSavedKeys()
+  local ok, encoded = pcall(function()
+    return json.encode(savedKeys)
+  end)
+
+  if not ok then
+    print("[PVP99] Erro salvando keys locais: " .. tostring(encoded))
+    return
+  end
+
+  g_settings.set(SETTINGS_LICENSES, encoded)
+  g_settings.save()
+end
+
+local function getLicenseProductId(license)
+  if type(license) ~= "table"
+    or type(license.products) ~= "table" then
+    return nil
+  end
+
+  local found = nil
+  local count = 0
+
+  for productId, enabled in pairs(license.products) do
+    if enabled == true then
+      found = tostring(productId)
+      count = count + 1
+    end
+  end
+
+  -- Regra PVP99: uma key libera exatamente um bot.
+  if count ~= 1 then
+    return nil
+  end
+
+  return found
 end
 
 local function normalizeKey(value)
@@ -437,24 +518,50 @@ local function licenseExpired(license)
 end
 
 local function productAllowed(productId)
-  if type(activeLicense) ~= "table" then
+  local license = activeLicenses[productId]
+
+  if type(license) ~= "table" then
     return false
   end
 
-  if activeLicense.active ~= true then
+  if license.active ~= true then
     return false
   end
 
-  if licenseExpired(activeLicense) then
+  if licenseExpired(license) then
     return false
   end
 
-  if getBindingUid(activeLicense) ~= auth.uid then
+  if getBindingUid(license) ~= auth.uid then
     return false
   end
 
-  return type(activeLicense.products) == "table"
-    and activeLicense.products[productId] == true
+  return type(license.products) == "table"
+    and license.products[productId] == true
+end
+
+local function getProductLicenseInfo(productId)
+  local license = activeLicenses[productId]
+
+  if type(license) == "table" and productAllowed(productId) then
+    return formatExpiryDate(license.expiresAt), "#64ffb5"
+  end
+
+  local state = licenseStates[productId]
+
+  if state == "expired" then
+    return "LICENCA EXPIRADA", "#ff6b8a"
+  elseif state == "inactive" then
+    return "LICENCA BLOQUEADA", "#ff6b8a"
+  elseif state == "other_device" then
+    return "VINCULADA A OUTRO DISPOSITIVO", "#ff6b8a"
+  elseif state == "not_bound" then
+    return "CHAVE AGUARDANDO ATIVACAO", "#ffd36b"
+  elseif savedKeys[productId] then
+    return "LICENCA NAO LIBERADA", "#ffd36b"
+  end
+
+  return "SEM LICENCA", "#8f819b"
 end
 
 local function getPurchaseUrl(productId)
@@ -503,27 +610,37 @@ local function refreshRows()
     local entry = products[productId]
     local allowed = productAllowed(productId)
 
-    if item and item.action and entry then
-      if allowed then
-        item.action:setEnabled(true)
+    if item and entry then
+      if item.expiry then
+        local expiryText, expiryColor = getProductLicenseInfo(productId)
+        item.expiry:setText(expiryText)
+        item.expiry:setColor(expiryColor)
+      end
 
-        if isInstalled(entry.folder) then
-          item.action:setText("BAIXADO")
-          item.action:setColor("#64ffb5")
-          item.action:setBackgroundColor("#173326")
+      if item.action then
+        if allowed then
+          item.action:setEnabled(true)
+
+          if isInstalled(entry.folder) then
+            item.action:setText("BAIXADO")
+            item.action:setColor("#64ffb5")
+            item.action:setBackgroundColor("#173326")
+          else
+            item.action:setText("BAIXAR")
+            item.action:setColor("#ffffff")
+            item.action:setBackgroundColor("#43245d")
+          end
         else
-          item.action:setText("BAIXAR")
+          item.action:setEnabled(true)
+          item.action:setText("COMPRAR")
           item.action:setColor("#ffffff")
-          item.action:setBackgroundColor("#43245d")
+          item.action:setBackgroundColor("#53276d")
         end
-      else
-        item.action:setEnabled(true)
-        item.action:setText("COMPRAR")
-        item.action:setColor("#ffffff")
-        item.action:setBackgroundColor("#53276d")
       end
     end
   end
+
+  refreshLicenseSummary()
 end
 
 local function waitForInstallComplete(productId, entry, attempts)
@@ -635,6 +752,7 @@ local function renderProducts(data)
     row.botWidget = true
 
     local name = row:recursiveGetChildById("botName")
+    local expiry = row:recursiveGetChildById("botExpiry")
     local price = row:recursiveGetChildById("botPrice")
     local action = row:recursiveGetChildById("action")
 
@@ -648,6 +766,7 @@ local function renderProducts(data)
 
     rows[productId] = {
       row = row,
+      expiry = expiry,
       action = action
     }
 
@@ -685,60 +804,119 @@ local function loadProducts(done)
   end)
 end
 
-local function applyAuthorizedLicense(key, license)
-  activeLicenseKey = key
-  activeLicense = license
+local function applyAuthorizedLicense(productId, key, license, silent)
+  activeLicenses[productId] = license
+  activeLicenseKeys[productId] = key
+  licenseStates[productId] = "active"
 
-  g_settings.set(SETTINGS_LICENSE, key)
-  g_settings.save()
+  savedKeys[productId] = key
+  saveSavedKeys()
 
-  if licenseInput then
-    licenseInput:setText(key)
+  -- Ao migrar da versão antiga, deixa de depender da key única.
+  if g_settings.getString(LEGACY_SETTINGS_LICENSE) ~= "" then
+    g_settings.set(LEGACY_SETTINGS_LICENSE, "")
+    g_settings.save()
   end
 
-  setLicenseStatus("ATIVA", "#64ffb5")
-  refreshExpiryInfo()
   refreshRows()
 
-  if hasDownloadedAllowedProduct() then
-    setStatus("BAIXADO COM SUCESSO - DESLIGUE O BOT", "#64ffb5")
-  else
-    setStatus("LICENCA LIBERADA NESTA INSTALACAO", "#64ffb5")
+  if not silent then
+    if licenseInput then
+      licenseInput:setText("")
+    end
+
+    setLicenseStatus("ATIVA", "#64ffb5")
+
+    local productName = productId
+    if type(products[productId]) == "table"
+      and products[productId].name then
+      productName = tostring(products[productId].name)
+    end
+
+    if isInstalled(products[productId] and products[productId].folder or "") then
+      setStatus(productName .. " LIBERADO - BOT JA BAIXADO", "#64ffb5")
+    else
+      setStatus(productName .. " LIBERADO PARA DOWNLOAD", "#64ffb5")
+    end
   end
 end
 
-local function checkLicense(key, allowBind)
+local function clearProductLicense(productId, state)
+  activeLicenses[productId] = nil
+  activeLicenseKeys[productId] = nil
+  licenseStates[productId] = state
+  refreshRows()
+end
+
+local function checkLicense(key, allowBind, silent)
   if not auth.token or not auth.uid then
-    setStatus("FIREBASE AINDA NAO CONECTADO", "#ff6b8a")
+    if not silent then
+      setStatus("FIREBASE AINDA NAO CONECTADO", "#ff6b8a")
+    end
     return
   end
 
   key = normalizeKey(key)
 
   if not key then
-    setLicenseStatus("CODIGO INVALIDO", "#ff6b8a")
-    setStatus("DIGITE UMA CHAVE VALIDA", "#ff6b8a")
+    if not silent then
+      setLicenseStatus("CODIGO INVALIDO", "#ff6b8a")
+      setStatus("DIGITE UMA CHAVE VALIDA", "#ff6b8a")
+    end
     return
   end
 
-  setLicenseStatus("VERIFICANDO...", "#ffd36b")
+  if not silent then
+    setLicenseStatus("VERIFICANDO...", "#ffd36b")
+  end
 
   HTTP.getJSON(firebasePath("licenses/" .. key), function(license, err)
     if err or type(license) ~= "table" then
-      setLicenseStatus("INVALIDA", "#ff6b8a")
-      setStatus("CHAVE NAO ENCONTRADA", "#ff6b8a")
+      if not silent then
+        setLicenseStatus("INVALIDA", "#ff6b8a")
+        setStatus("CHAVE NAO ENCONTRADA", "#ff6b8a")
+      end
       return
     end
 
+    local productId = getLicenseProductId(license)
+
+    if not productId then
+      if not silent then
+        setLicenseStatus("INVALIDA", "#ff6b8a")
+        setStatus("ESTA KEY NAO POSSUI UM BOT VALIDO", "#ff6b8a")
+      end
+      return
+    end
+
+    if type(products[productId]) ~= "table" then
+      licenseStates[productId] = "unknown_product"
+      if not silent then
+        setLicenseStatus("INDISPONIVEL", "#ff6b8a")
+        setStatus("BOT DA KEY NAO ESTA DISPONIVEL", "#ff6b8a")
+      end
+      return
+    end
+
+    -- Salva qual key pertence àquele bot mesmo antes de concluir o vínculo.
+    savedKeys[productId] = key
+    saveSavedKeys()
+
     if license.active ~= true then
-      setLicenseStatus("INATIVA", "#ff6b8a")
-      setStatus("LICENCA INATIVA", "#ff6b8a")
+      clearProductLicense(productId, "inactive")
+      if not silent then
+        setLicenseStatus("INATIVA", "#ff6b8a")
+        setStatus("LICENCA INATIVA", "#ff6b8a")
+      end
       return
     end
 
     if licenseExpired(license) then
-      setLicenseStatus("EXPIRADA", "#ff6b8a")
-      setStatus("LICENCA EXPIRADA", "#ff6b8a")
+      clearProductLicense(productId, "expired")
+      if not silent then
+        setLicenseStatus("EXPIRADA", "#ff6b8a")
+        setStatus("LICENCA EXPIRADA", "#ff6b8a")
+      end
       return
     end
 
@@ -746,25 +924,26 @@ local function checkLicense(key, allowBind)
 
     if boundUid then
       if boundUid == auth.uid then
-        applyAuthorizedLicense(key, license)
+        applyAuthorizedLicense(productId, key, license, silent)
       else
-        activeLicense = nil
-        activeLicenseKey = nil
-        refreshExpiryInfo()
-        setLicenseStatus("OUTRO DISPOSITIVO", "#ff6b8a")
-        setStatus("CHAVE JA VINCULADA A OUTRA INSTALACAO", "#ff6b8a")
-        refreshRows()
+        clearProductLicense(productId, "other_device")
+        if not silent then
+          setLicenseStatus("OUTRO DISPOSITIVO", "#ff6b8a")
+          setStatus("CHAVE JA VINCULADA A OUTRA INSTALACAO", "#ff6b8a")
+        end
       end
 
       return
     end
 
     if not allowBind then
-      setLicenseStatus("NAO ATIVADA", "#ffd36b")
+      clearProductLicense(productId, "not_bound")
       return
     end
 
-    setLicenseStatus("VINCULANDO...", "#ffd36b")
+    if not silent then
+      setLicenseStatus("VINCULANDO...", "#ffd36b")
+    end
 
     local activationTime = 0
     if os.time then
@@ -779,25 +958,36 @@ local function checkLicense(key, allowBind)
       },
       function(result, bindErr)
         if bindErr then
-          print("[PVP99] Erro binding: " .. tostring(bindErr))
-          setLicenseStatus("BLOQUEADA", "#ff6b8a")
-          setStatus("NAO FOI POSSIVEL VINCULAR A CHAVE", "#ff6b8a")
+          clearProductLicense(productId, "bind_error")
+
+          if not silent then
+            print("[PVP99] Erro binding: " .. tostring(bindErr))
+            setLicenseStatus("BLOQUEADA", "#ff6b8a")
+            setStatus("NAO FOI POSSIVEL VINCULAR A CHAVE", "#ff6b8a")
+          end
           return
         end
 
-        -- Reconsulta para confirmar o vinculo salvo no servidor.
         HTTP.getJSON(firebasePath("licenses/" .. key), function(updated, readErr)
           if readErr or type(updated) ~= "table" then
-            setLicenseStatus("ERRO", "#ff6b8a")
-            setStatus("ERRO AO CONFIRMAR ATIVACAO", "#ff6b8a")
+            clearProductLicense(productId, "read_error")
+
+            if not silent then
+              setLicenseStatus("ERRO", "#ff6b8a")
+              setStatus("ERRO AO CONFIRMAR ATIVACAO", "#ff6b8a")
+            end
             return
           end
 
           if getBindingUid(updated) == auth.uid then
-            applyAuthorizedLicense(key, updated)
+            applyAuthorizedLicense(productId, key, updated, silent)
           else
-            setLicenseStatus("BLOQUEADA", "#ff6b8a")
-            setStatus("ATIVACAO RECUSADA", "#ff6b8a")
+            clearProductLicense(productId, "rejected")
+
+            if not silent then
+              setLicenseStatus("BLOQUEADA", "#ff6b8a")
+              setStatus("ATIVACAO RECUSADA", "#ff6b8a")
+            end
           end
         end)
       end
@@ -805,19 +995,46 @@ local function checkLicense(key, allowBind)
   end)
 end
 
-local function loadSavedLicense()
-  local saved = g_settings.getString(SETTINGS_LICENSE)
+local function loadSavedLicenses()
+  savedKeys = loadSavedKeys()
 
-  if saved and saved ~= "" then
-    if licenseInput then
-      licenseInput:setText(saved)
+  local keysToCheck = {}
+  local seen = {}
+
+  for productId, key in pairs(savedKeys) do
+    if type(key) == "string" and key ~= "" and not seen[key] then
+      table.insert(keysToCheck, key)
+      seen[key] = true
     end
-
-    checkLicense(saved, false)
-  else
-    refreshExpiryInfo()
-    setLicenseStatus("NAO ATIVADO", "#ffd36b")
   end
+
+  -- Migração automática do sistema antigo de uma única key.
+  local legacyKey = g_settings.getString(LEGACY_SETTINGS_LICENSE)
+
+  if legacyKey and legacyKey ~= "" and not seen[legacyKey] then
+    table.insert(keysToCheck, legacyKey)
+    seen[legacyKey] = true
+  end
+
+  if #keysToCheck == 0 then
+    refreshRows()
+    setLicenseStatus("NAO ATIVADO", "#ffd36b")
+    setStatus("DIGITE UMA KEY PARA LIBERAR UM BOT", "#cbb5d9")
+    return
+  end
+
+  setLicenseStatus("VALIDANDO...", "#ffd36b")
+  setStatus("VALIDANDO " .. #keysToCheck .. " LICENCA(S)...", "#ffd36b")
+
+  for _, key in ipairs(keysToCheck) do
+    checkLicense(key, false, true)
+  end
+
+  schedule(1200, function()
+    refreshRows()
+    setLicenseStatus("PRONTO", "#64ffb5")
+    setStatus("LICENCAS CARREGADAS", "#64ffb5")
+  end)
 end
 
 local function authenticateDevice(done)
@@ -857,7 +1074,7 @@ end
 if activateButton then
   activateButton.onClick = function()
     if busy then return end
-    checkLicense(licenseInput and licenseInput:getText() or "", true)
+    checkLicense(licenseInput and licenseInput:getText() or "", true, false)
   end
 end
 
@@ -873,10 +1090,10 @@ end
 window:show()
 window:raise()
 window:focus()
-refreshExpiryInfo()
+refreshLicenseSummary()
 
 authenticateDevice(function()
   loadProducts(function()
-    loadSavedLicense()
+    loadSavedLicenses()
   end)
 end)
