@@ -1,12 +1,10 @@
 -- ============================================================
--- PVP99 - BOOK WORLD INSTALLER / UPDATER
+-- PVP99 - BOOK WORLD INSTALLER / UPDATER V2
 -- OTCv8
 --
--- Baixa toda a pasta Book-World para:
---   /bot/Book-World
---
--- Repositorio de distribuicao:
---   oficiallpvp99/PVP99-Dist
+-- Ao concluir 100%, cria:
+--   /bot/Book-World/.pvp99_complete
+-- O Bot Manager usa esse arquivo para confirmar o download.
 -- ============================================================
 
 local OWNER = "oficiallpvp99"
@@ -28,6 +26,7 @@ local MANIFEST_URL = BASE_URL .. "manifest.lua"
 
 local VIRTUAL_ROOT = "/bot/" .. TARGET_NAME
 local DOWNLOAD_ROOT = "bot/" .. TARGET_NAME .. "/"
+local COMPLETE_MARKER = VIRTUAL_ROOT .. "/.pvp99_complete"
 
 local oldTimeout = HTTP.timeout
 HTTP.timeout = math.max(HTTP.timeout or 5, 15)
@@ -74,8 +73,10 @@ local function prepareDirectories(manifest)
     end
 
     local current = VIRTUAL_ROOT
+
     for part in rel:gmatch("[^/]+") do
       current = current .. "/" .. part
+
       if not ensureDir(current) then
         return false, "Falha ao criar pasta: " .. current
       end
@@ -83,6 +84,24 @@ local function prepareDirectories(manifest)
   end
 
   return true
+end
+
+local function removeOldMarker()
+  if g_resources.fileExists(COMPLETE_MARKER) then
+    g_resources.deleteFile(COMPLETE_MARKER)
+  end
+end
+
+local function writeCompleteMarker()
+  local value = "PVP99_OK"
+
+  if os.time then
+    value = value .. ":" .. tostring(os.time())
+  end
+
+  g_resources.writeFileContents(COMPLETE_MARKER, value)
+
+  return g_resources.fileExists(COMPLETE_MARKER)
 end
 
 local function refreshBotList()
@@ -104,11 +123,14 @@ local function installManifest(manifest)
   end
 
   local ok, dirErr = prepareDirectories(manifest)
+
   if not ok then
     finishTimeout()
     print("[PVP99] " .. tostring(dirErr))
     return
   end
+
+  removeOldMarker()
 
   local files = manifest.files
   local total = #files
@@ -122,9 +144,17 @@ local function installManifest(manifest)
 
     if not rel then
       finishTimeout()
+
+      if not writeCompleteMarker() then
+        print("[PVP99] ERRO: nao foi possivel gravar confirmacao de instalacao.")
+        return
+      end
+
       print("[PVP99] Book-World instalado com sucesso.")
       print("[PVP99] Pasta: " .. VIRTUAL_ROOT)
-      print("[PVP99] Atualizando lista de Bots...")
+      print("[PVP99] Download confirmado.")
+      print("[PVP99] Desligue e ligue o Bot para aparecer na lista.")
+
       refreshBotList()
       return
     end
@@ -158,6 +188,7 @@ local function installManifest(manifest)
           schedule(300, function()
             downloadNext(retry + 1)
           end)
+
           return
         end
 
