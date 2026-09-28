@@ -1,37 +1,34 @@
 -- ============================================================
--- PVP99 BOT MANAGER V2 - COMPACTO
--- Lista remota via catalog.lua
--- Nao altera o cliente OTCv8.
+-- PVP99 BOT MANAGER V3
+-- Firebase Auth + chave de liberacao + 1 instalacao por chave
+-- Painel gratuito / downloads liberados por produto
 -- ============================================================
 
-local BASE_URL =
-  "https://raw.githubusercontent.com/oficiallpvp99/PVP99-Dist/refs/heads/main/"
+local FIREBASE_API_KEY = "AIzaSyBlYZxdTlLeVYmnvX0bkwISq3OzEuxNIdU"
+local DATABASE_URL = "https://pvp99-bot-premium-default-rtdb.firebaseio.com"
+local DIST_BASE = "https://raw.githubusercontent.com/oficiallpvp99/PVP99-Dist/refs/heads/main/"
 
-local CATALOG_URL = BASE_URL .. "catalog.lua"
+local AUTH_SIGNUP =
+  "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" .. FIREBASE_API_KEY
 
--- Fallback: se catalog.lua ainda nao estiver no GitHub,
--- o Book World continua aparecendo.
-local FALLBACK_CATALOG = {
-  {
-    name = "BOOK WORLD",
-    folder = "Book-World",
-    version = "1.0",
-    installer = "Book-World/installer.lua",
-    enabled = true
-  }
-}
+local AUTH_SIGNIN =
+  "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" .. FIREBASE_API_KEY
+
+local SETTINGS_EMAIL = "pvp99_bot_device_email"
+local SETTINGS_PASSWORD = "pvp99_bot_device_password"
+local SETTINGS_LICENSE = "pvp99_bot_license_key"
 
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV2")
+local old = root:recursiveGetChildById("pvp99BotManagerV3")
 if old then
   old:destroy()
 end
 
 g_ui.loadUIFromString([[
-PVP99CompactRow < Panel
-  height: 38
+PVP99PremiumRow < Panel
+  height: 40
   margin-top: 3
   margin-bottom: 3
   background-color: #17131f
@@ -42,17 +39,17 @@ PVP99CompactRow < Panel
     id: botName
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
-    margin-left: 12
+    margin-left: 10
     color: #e486ff
     font: verdana-11px-rounded
     text-auto-resize: true
 
   Label
-    id: botVersion
+    id: botPrice
     anchors.right: action.left
     anchors.verticalCenter: parent.verticalCenter
     margin-right: 10
-    color: #7f7188
+    color: #ffd36b
     font: verdana-11px-rounded
     text-auto-resize: true
 
@@ -61,16 +58,16 @@ PVP99CompactRow < Panel
     anchors.right: parent.right
     anchors.verticalCenter: parent.verticalCenter
     margin-right: 6
-    size: 112 28
-    text: BAIXAR
+    size: 105 28
+    text: BLOQUEADO
     color: #ffffff
-    background-color: #43245d
+    background-color: #2d2532
     border-width: 1
-    border-color: #a85fd1
+    border-color: #6b3f8f
 
-PVP99ManagerWindowV2 < MainWindow
-  id: pvp99BotManagerV2
-  size: 460 360
+PVP99ManagerWindowV3 < MainWindow
+  id: pvp99BotManagerV3
+  size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
 
@@ -88,17 +85,15 @@ PVP99ManagerWindowV2 < MainWindow
     border-color: #6b3f8f
 
     Label
-      id: brand
       anchors.top: parent.top
       anchors.horizontalCenter: parent.horizontalCenter
       margin-top: 7
-      text: PVP99
+      text: BOT PREMIUM 2027
       color: #d96cff
       font: verdana-11px-rounded
       text-auto-resize: true
 
     Label
-      id: subtitle
       anchors.bottom: parent.bottom
       anchors.horizontalCenter: parent.horizontalCenter
       margin-bottom: 7
@@ -108,11 +103,11 @@ PVP99ManagerWindowV2 < MainWindow
       text-auto-resize: true
 
   Panel
-    id: licenseBar
+    id: licensePanel
     anchors.top: topBar.bottom
     anchors.left: parent.left
     anchors.right: parent.right
-    height: 34
+    height: 76
     margin-top: 8
     margin-left: 12
     margin-right: 12
@@ -121,27 +116,53 @@ PVP99ManagerWindowV2 < MainWindow
     border-color: #3f3150
 
     Label
+      id: licenseLabel
+      anchors.top: parent.top
       anchors.left: parent.left
-      anchors.verticalCenter: parent.verticalCenter
+      margin-top: 8
       margin-left: 10
-      text: LICENCA
+      text: CODIGO DE LIBERACAO
       color: #e486ff
       font: verdana-11px-rounded
       text-auto-resize: true
 
     Label
       id: licenseStatus
+      anchors.top: parent.top
       anchors.right: parent.right
-      anchors.verticalCenter: parent.verticalCenter
+      margin-top: 8
       margin-right: 10
-      text: NAO VINCULADA
+      text: NAO ATIVADO
       color: #ffd36b
       font: verdana-11px-rounded
       text-auto-resize: true
 
+    TextEdit
+      id: licenseInput
+      anchors.left: parent.left
+      anchors.bottom: parent.bottom
+      margin-left: 10
+      margin-bottom: 10
+      size: 310 28
+      text: ""
+      color: #272727
+
+    Button
+      id: activateButton
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-right: 10
+      margin-bottom: 10
+      size: 120 28
+      text: ATIVAR
+      color: #ffffff
+      background-color: #43245d
+      border-width: 1
+      border-color: #d96cff
+
   VerticalList
     id: botList
-    anchors.top: licenseBar.bottom
+    anchors.top: licensePanel.bottom
     anchors.left: parent.left
     anchors.right: parent.right
     anchors.bottom: statusBar.top
@@ -170,7 +191,7 @@ PVP99ManagerWindowV2 < MainWindow
     Label
       id: status
       anchors.centerIn: parent
-      text: CARREGANDO CATALOGO...
+      text: CONECTANDO AO FIREBASE...
       color: #ffd36b
       font: verdana-11px-rounded
       text-auto-resize: true
@@ -188,176 +209,469 @@ PVP99ManagerWindowV2 < MainWindow
     border-color: #6b3f8f
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV2", root)
+local window = UI.createWindow("PVP99ManagerWindowV3", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
 local status = window:recursiveGetChildById("status")
+local licenseInput = window:recursiveGetChildById("licenseInput")
+local licenseStatus = window:recursiveGetChildById("licenseStatus")
+local activateButton = window:recursiveGetChildById("activateButton")
 local closeButton = window:recursiveGetChildById("closeButton")
 
+local auth = {
+  token = nil,
+  uid = nil
+}
+
+local products = {}
+local rows = {}
+local activeLicense = nil
+local activeLicenseKey = nil
 local busy = false
-local catalog = {}
 
 local function setStatus(text, color)
   if not status then return end
   status:setText(text)
-  if color then
-    status:setColor(color)
+  if color then status:setColor(color) end
+end
+
+local function setLicenseStatus(text, color)
+  if not licenseStatus then return end
+  licenseStatus:setText(text)
+  if color then licenseStatus:setColor(color) end
+end
+
+local function normalizeKey(value)
+  value = tostring(value or "")
+  value = value:gsub("%s+", "")
+  value = value:upper()
+
+  if value == "" then
+    return nil
   end
+
+  if not value:match("^[A-Z0-9_%%-]+$") then
+    return nil
+  end
+
+  return value
+end
+
+local function makeRandomId()
+  local raw = nil
+
+  if g_crypt and g_crypt.genUUID then
+    raw = g_crypt.genUUID()
+  end
+
+  if not raw or raw == "" then
+    local stamp = os.time and os.time() or 0
+    raw = tostring(stamp) .. "-" .. tostring(math.random(100000, 999999))
+  end
+
+  raw = raw:gsub("[^%w]", "")
+  return raw:lower()
+end
+
+local function getDeviceCredentials()
+  local email = g_settings.getString(SETTINGS_EMAIL)
+  local password = g_settings.getString(SETTINGS_PASSWORD)
+
+  if email and email ~= "" and password and password ~= "" then
+    return email, password
+  end
+
+  local id = makeRandomId()
+  email = "device_" .. id .. "@pvp99bot.com"
+  password = "Pvp99!" .. makeRandomId() .. "A9"
+
+  g_settings.set(SETTINGS_EMAIL, email)
+  g_settings.set(SETTINGS_PASSWORD, password)
+  g_settings.save()
+
+  return email, password
+end
+
+local function setAuth(data)
+  if type(data) ~= "table" then return false end
+  if not data.idToken or not data.localId then return false end
+
+  auth.token = data.idToken
+  auth.uid = data.localId
+  return true
+end
+
+local function firebasePath(path)
+  return DATABASE_URL .. "/" .. path .. ".json?auth=" .. auth.token
 end
 
 local function isInstalled(folder)
   if type(folder) ~= "string" or folder == "" then
     return false
   end
+
   return g_resources.directoryExists("/bot/" .. folder)
 end
 
-local function installBot(entry, button)
-  if busy then return end
-  if not entry or not entry.installer then return end
+local function priceText(price)
+  local value = tonumber(price) or 65
+  return string.format("R$ %.2f", value):gsub("%.", ",")
+end
 
-  busy = true
-
-  if button then
-    button:setText("AGUARDE...")
-    button:setEnabled(false)
+local function getBindingUid(license)
+  if type(license) ~= "table" or type(license.binding) ~= "table" then
+    return nil
   end
 
-  setStatus("BAIXANDO " .. entry.name .. "...", "#ffd36b")
+  for _, binding in pairs(license.binding) do
+    if type(binding) == "table" and binding.uid then
+      return tostring(binding.uid)
+    end
+  end
 
-  HTTP.get(BASE_URL .. entry.installer, function(script, err)
-    if err or not script or script == "" then
-      busy = false
+  return nil
+end
 
-      if button then
-        button:setText(isInstalled(entry.folder) and "ATUALIZAR" or "BAIXAR")
-        button:setEnabled(true)
+local function licenseExpired(license)
+  if type(license) ~= "table" then return true end
+
+  local expiresAt = tonumber(license.expiresAt) or 0
+
+  if expiresAt == 0 then
+    return false
+  end
+
+  if os.time then
+    return os.time() >= expiresAt
+  end
+
+  return false
+end
+
+local function productAllowed(productId)
+  if type(activeLicense) ~= "table" then
+    return false
+  end
+
+  if activeLicense.active ~= true then
+    return false
+  end
+
+  if licenseExpired(activeLicense) then
+    return false
+  end
+
+  if getBindingUid(activeLicense) ~= auth.uid then
+    return false
+  end
+
+  return type(activeLicense.products) == "table"
+    and activeLicense.products[productId] == true
+end
+
+local function refreshRows()
+  for productId, item in pairs(rows) do
+    local entry = products[productId]
+    local allowed = productAllowed(productId)
+
+    if item and item.action and entry then
+      if allowed then
+        item.action:setEnabled(true)
+        item.action:setText(isInstalled(entry.folder) and "ATUALIZAR" or "BAIXAR")
+        item.action:setBackgroundColor("#43245d")
+      else
+        item.action:setEnabled(true)
+        item.action:setText("BLOQUEADO")
+        item.action:setBackgroundColor("#2d2532")
       end
+    end
+  end
+end
 
-      setStatus("ERRO AO BAIXAR " .. entry.name, "#ff6b8a")
-      print("[PVP99] " .. tostring(err))
+local function runInstaller(productId)
+  local entry = products[productId]
+
+  if not entry or not productAllowed(productId) then
+    setStatus("ATIVE UMA CHAVE QUE LIBERE ESTE BOT", "#ff6b8a")
+    return
+  end
+
+  if busy then return end
+  busy = true
+
+  local row = rows[productId]
+  if row and row.action then
+    row.action:setEnabled(false)
+    row.action:setText("AGUARDE...")
+  end
+
+  setStatus("CARREGANDO " .. tostring(entry.name or productId) .. "...", "#ffd36b")
+
+  HTTP.get(DIST_BASE .. tostring(entry.installer or ""), function(script, err)
+    busy = false
+
+    if err or not script or script == "" then
+      setStatus("ERRO AO BAIXAR INSTALADOR", "#ff6b8a")
+      refreshRows()
       return
     end
 
     local fn, loadErr = loadstring(script)
 
     if not fn then
-      busy = false
-
-      if button then
-        button:setText(isInstalled(entry.folder) and "ATUALIZAR" or "BAIXAR")
-        button:setEnabled(true)
-      end
-
-      setStatus("ERRO NO INSTALADOR", "#ff6b8a")
       print("[PVP99] " .. tostring(loadErr))
+      setStatus("ERRO NO INSTALADOR", "#ff6b8a")
+      refreshRows()
       return
     end
 
     local ok, runErr = pcall(fn)
-    busy = false
 
     if not ok then
-      if button then
-        button:setText(isInstalled(entry.folder) and "ATUALIZAR" or "BAIXAR")
-        button:setEnabled(true)
-      end
-
-      setStatus("ERRO AO EXECUTAR", "#ff6b8a")
       print("[PVP99] " .. tostring(runErr))
+      setStatus("ERRO AO EXECUTAR INSTALADOR", "#ff6b8a")
+      refreshRows()
       return
     end
 
-    if button then
-      button:setText("ATUALIZAR")
-      button:setEnabled(true)
-    end
-
-    setStatus(entry.name .. " - INSTALADOR INICIADO", "#64ffb5")
+    setStatus("INSTALADOR INICIADO", "#64ffb5")
+    refreshRows()
   end)
 end
 
-local function renderCatalog(items)
-  catalog = items or {}
+local function renderProducts(data)
+  products = type(data) == "table" and data or {}
+  rows = {}
 
   if not botList then return end
   botList:destroyChildren()
 
-  local visibleCount = 0
+  local ordered = {}
 
-  for _, entry in ipairs(catalog) do
-    if entry.enabled ~= false
-      and type(entry.name) == "string"
-      and type(entry.folder) == "string"
-      and type(entry.installer) == "string" then
-
-      local row = g_ui.createWidget("PVP99CompactRow", botList)
-      row.botWidget = true
-
-      local name = row:recursiveGetChildById("botName")
-      local version = row:recursiveGetChildById("botVersion")
-      local action = row:recursiveGetChildById("action")
-
-      if name then
-        name:setText(entry.name)
-      end
-
-      if version then
-        if entry.version and entry.version ~= "" then
-          version:setText("V" .. entry.version)
-        else
-          version:setText("")
-        end
-      end
-
-      if action then
-        action:setText(isInstalled(entry.folder) and "ATUALIZAR" or "BAIXAR")
-
-        action.onClick = function()
-          installBot(entry, action)
-        end
-      end
-
-      visibleCount = visibleCount + 1
+  for id, entry in pairs(products) do
+    if type(entry) == "table" and entry.active ~= false then
+      table.insert(ordered, {
+        id = id,
+        data = entry
+      })
     end
   end
 
-  if visibleCount == 0 then
+  table.sort(ordered, function(a, b)
+    return tostring(a.data.name or a.id) < tostring(b.data.name or b.id)
+  end)
+
+  for _, item in ipairs(ordered) do
+    local productId = item.id
+    local entry = item.data
+    local row = g_ui.createWidget("PVP99PremiumRow", botList)
+    row.botWidget = true
+
+    local name = row:recursiveGetChildById("botName")
+    local price = row:recursiveGetChildById("botPrice")
+    local action = row:recursiveGetChildById("action")
+
+    if name then
+      name:setText(tostring(entry.name or productId))
+    end
+
+    if price then
+      price:setText(priceText(entry.price))
+    end
+
+    rows[productId] = {
+      row = row,
+      action = action
+    }
+
+    if action then
+      action.onClick = function()
+        runInstaller(productId)
+      end
+    end
+  end
+
+  refreshRows()
+
+  if #ordered == 0 then
     setStatus("NENHUM BOT DISPONIVEL", "#ff6b8a")
   else
-    setStatus(visibleCount .. " BOT(S) DISPONIVEL(IS)", "#64ffb5")
+    setStatus(#ordered .. " BOT(S) DISPONIVEL(IS)", "#64ffb5")
   end
 end
 
-local function loadCatalog()
-  setStatus("CARREGANDO CATALOGO...", "#ffd36b")
-
-  HTTP.get(CATALOG_URL, function(data, err)
-    if err or not data or data == "" then
-      print("[PVP99] catalog.lua indisponivel. Usando fallback.")
-      renderCatalog(FALLBACK_CATALOG)
+local function loadProducts(done)
+  HTTP.getJSON(firebasePath("products"), function(data, err)
+    if err or type(data) ~= "table" then
+      print("[PVP99] Erro products: " .. tostring(err))
+      setStatus("ERRO AO CARREGAR CATALOGO", "#ff6b8a")
       return
     end
 
-    local fn, loadErr = loadstring(data)
+    renderProducts(data)
 
-    if not fn then
-      print("[PVP99] Erro no catalog.lua: " .. tostring(loadErr))
-      renderCatalog(FALLBACK_CATALOG)
-      return
-    end
-
-    local ok, remoteCatalog = pcall(fn)
-
-    if not ok or type(remoteCatalog) ~= "table" then
-      print("[PVP99] catalog.lua invalido.")
-      renderCatalog(FALLBACK_CATALOG)
-      return
-    end
-
-    renderCatalog(remoteCatalog)
+    if done then done() end
   end)
+end
+
+local function applyAuthorizedLicense(key, license)
+  activeLicenseKey = key
+  activeLicense = license
+
+  g_settings.set(SETTINGS_LICENSE, key)
+  g_settings.save()
+
+  if licenseInput then
+    licenseInput:setText(key)
+  end
+
+  setLicenseStatus("ATIVA", "#64ffb5")
+  setStatus("LICENCA LIBERADA NESTA INSTALACAO", "#64ffb5")
+  refreshRows()
+end
+
+local function checkLicense(key, allowBind)
+  if not auth.token or not auth.uid then
+    setStatus("FIREBASE AINDA NAO CONECTADO", "#ff6b8a")
+    return
+  end
+
+  key = normalizeKey(key)
+
+  if not key then
+    setLicenseStatus("CODIGO INVALIDO", "#ff6b8a")
+    setStatus("DIGITE UMA CHAVE VALIDA", "#ff6b8a")
+    return
+  end
+
+  setLicenseStatus("VERIFICANDO...", "#ffd36b")
+
+  HTTP.getJSON(firebasePath("licenses/" .. key), function(license, err)
+    if err or type(license) ~= "table" then
+      setLicenseStatus("INVALIDA", "#ff6b8a")
+      setStatus("CHAVE NAO ENCONTRADA", "#ff6b8a")
+      return
+    end
+
+    if license.active ~= true then
+      setLicenseStatus("INATIVA", "#ff6b8a")
+      setStatus("LICENCA INATIVA", "#ff6b8a")
+      return
+    end
+
+    if licenseExpired(license) then
+      setLicenseStatus("EXPIRADA", "#ff6b8a")
+      setStatus("LICENCA EXPIRADA", "#ff6b8a")
+      return
+    end
+
+    local boundUid = getBindingUid(license)
+
+    if boundUid then
+      if boundUid == auth.uid then
+        applyAuthorizedLicense(key, license)
+      else
+        activeLicense = nil
+        activeLicenseKey = nil
+        setLicenseStatus("OUTRO DISPOSITIVO", "#ff6b8a")
+        setStatus("CHAVE JA VINCULADA A OUTRA INSTALACAO", "#ff6b8a")
+        refreshRows()
+      end
+
+      return
+    end
+
+    if not allowBind then
+      setLicenseStatus("NAO ATIVADA", "#ffd36b")
+      return
+    end
+
+    setLicenseStatus("VINCULANDO...", "#ffd36b")
+
+    HTTP.postJSON(
+      firebasePath("licenses/" .. key .. "/binding"),
+      { uid = auth.uid },
+      function(result, bindErr)
+        if bindErr then
+          print("[PVP99] Erro binding: " .. tostring(bindErr))
+          setLicenseStatus("BLOQUEADA", "#ff6b8a")
+          setStatus("NAO FOI POSSIVEL VINCULAR A CHAVE", "#ff6b8a")
+          return
+        end
+
+        -- Reconsulta para confirmar o vinculo salvo no servidor.
+        HTTP.getJSON(firebasePath("licenses/" .. key), function(updated, readErr)
+          if readErr or type(updated) ~= "table" then
+            setLicenseStatus("ERRO", "#ff6b8a")
+            setStatus("ERRO AO CONFIRMAR ATIVACAO", "#ff6b8a")
+            return
+          end
+
+          if getBindingUid(updated) == auth.uid then
+            applyAuthorizedLicense(key, updated)
+          else
+            setLicenseStatus("BLOQUEADA", "#ff6b8a")
+            setStatus("ATIVACAO RECUSADA", "#ff6b8a")
+          end
+        end)
+      end
+    )
+  end)
+end
+
+local function loadSavedLicense()
+  local saved = g_settings.getString(SETTINGS_LICENSE)
+
+  if saved and saved ~= "" then
+    if licenseInput then
+      licenseInput:setText(saved)
+    end
+
+    checkLicense(saved, false)
+  else
+    setLicenseStatus("NAO ATIVADO", "#ffd36b")
+  end
+end
+
+local function authenticateDevice(done)
+  local email, password = getDeviceCredentials()
+
+  local payload = {
+    email = email,
+    password = password,
+    returnSecureToken = true
+  }
+
+  setStatus("AUTENTICANDO DISPOSITIVO...", "#ffd36b")
+
+  HTTP.postJSON(AUTH_SIGNIN, payload, function(data, err)
+    if not err and setAuth(data) then
+      setStatus("DISPOSITIVO AUTENTICADO", "#64ffb5")
+      done()
+      return
+    end
+
+    -- Primeiro uso: cria a conta tecnica desta instalacao.
+    HTTP.postJSON(AUTH_SIGNUP, payload, function(signupData, signupErr)
+      if signupErr or not setAuth(signupData) then
+        print("[PVP99] Auth error: " .. tostring(signupErr or err))
+        setStatus("ERRO NA AUTENTICACAO FIREBASE", "#ff6b8a")
+        setLicenseStatus("OFFLINE", "#ff6b8a")
+        return
+      end
+
+      setStatus("DISPOSITIVO REGISTRADO", "#64ffb5")
+      done()
+    end)
+  end)
+end
+
+if activateButton then
+  activateButton.onClick = function()
+    if busy then return end
+    checkLicense(licenseInput and licenseInput:getText() or "", true)
+  end
 end
 
 if closeButton then
@@ -373,4 +687,8 @@ window:show()
 window:raise()
 window:focus()
 
-loadCatalog()
+authenticateDevice(function()
+  loadProducts(function()
+    loadSavedLicense()
+  end)
+end)
