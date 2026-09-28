@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V5
+-- PVP99 BOT MANAGER V7 NEON
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -7,6 +7,10 @@
 local FIREBASE_API_KEY = "AIzaSyBlYZxdTlLeVYmnvX0bkwISq3OzEuxNIdU"
 local DATABASE_URL = "https://pvp99-bot-premium-default-rtdb.firebaseio.com"
 local DIST_BASE = "https://raw.githubusercontent.com/oficiallpvp99/PVP99-Dist/refs/heads/main/"
+
+local PURCHASE_URLS = {
+  book_world = "https://www.pvp99.com.br/2026/09/book-world.html"
+}
 
 local AUTH_SIGNUP =
   "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" .. FIREBASE_API_KEY
@@ -21,7 +25,7 @@ local SETTINGS_LICENSE = "pvp99_bot_license_key"
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV5")
+local old = root:recursiveGetChildById("pvp99BotManagerV7")
 if old then
   old:destroy()
 end
@@ -31,16 +35,23 @@ PVP99PremiumRow < Panel
   height: 40
   margin-top: 3
   margin-bottom: 3
-  background-color: #17131f
+  background-color: #100b16
   border-width: 1
-  border-color: #4b315f
+  border-color: #7338a0
+
+  Panel
+    anchors.left: parent.left
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    width: 3
+    background-color: #d96cff
 
   Label
     id: botName
     anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
-    margin-left: 10
-    color: #e486ff
+    margin-left: 12
+    color: #f09bff
     font: verdana-11px-rounded
     text-auto-resize: true
 
@@ -49,7 +60,7 @@ PVP99PremiumRow < Panel
     anchors.right: action.left
     anchors.verticalCenter: parent.verticalCenter
     margin-right: 10
-    color: #ffd36b
+    color: #ffd66b
     font: verdana-11px-rounded
     text-auto-resize: true
 
@@ -59,14 +70,14 @@ PVP99PremiumRow < Panel
     anchors.verticalCenter: parent.verticalCenter
     margin-right: 6
     size: 105 28
-    text: BLOQUEADO
+    text: COMPRAR
     color: #ffffff
-    background-color: #2d2532
+    background-color: #2a2130
     border-width: 1
-    border-color: #6b3f8f
+    border-color: #9b52c7
 
-PVP99ManagerWindowV5 < MainWindow
-  id: pvp99BotManagerV5
+PVP99ManagerWindowV7 < MainWindow
+  id: pvp99BotManagerV7
   size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
@@ -76,31 +87,38 @@ PVP99ManagerWindowV5 < MainWindow
     anchors.top: parent.top
     anchors.left: parent.left
     anchors.right: parent.right
-    height: 52
+    height: 58
     margin-top: 32
     margin-left: 12
     margin-right: 12
-    background-color: #17131f
+    background-color: #0d0813
     border-width: 1
-    border-color: #6b3f8f
+    border-color: #b14ee0
 
     Label
       anchors.top: parent.top
       anchors.horizontalCenter: parent.horizontalCenter
       margin-top: 7
       text: BOT PREMIUM 2027
-      color: #d96cff
+      color: #e86fff
       font: verdana-11px-rounded
       text-auto-resize: true
 
     Label
       anchors.bottom: parent.bottom
       anchors.horizontalCenter: parent.horizontalCenter
-      margin-bottom: 7
-      text: BOTS DISPONIVEIS
-      color: #c9b6d8
+      margin-bottom: 9
+      text: PVP99 // SECURE DOWNLOAD CENTER
+      color: #cbb5d9
       font: verdana-11px-rounded
       text-auto-resize: true
+
+    Panel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      height: 2
+      background-color: #d96cff
 
   Panel
     id: licensePanel
@@ -111,18 +129,25 @@ PVP99ManagerWindowV5 < MainWindow
     margin-top: 8
     margin-left: 12
     margin-right: 12
-    background-color: #121018
+    background-color: #100b16
     border-width: 1
-    border-color: #3f3150
+    border-color: #70408b
+
+    Panel
+      anchors.left: parent.left
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      width: 3
+      background-color: #8d44b5
 
     Label
       id: licenseLabel
       anchors.top: parent.top
       anchors.left: parent.left
       margin-top: 8
-      margin-left: 10
+      margin-left: 12
       text: CODIGO DE LIBERACAO
-      color: #e486ff
+      color: #f09bff
       font: verdana-11px-rounded
       text-auto-resize: true
 
@@ -156,9 +181,9 @@ PVP99ManagerWindowV5 < MainWindow
       size: 120 28
       text: ATIVAR
       color: #ffffff
-      background-color: #43245d
+      background-color: #53276d
       border-width: 1
-      border-color: #d96cff
+      border-color: #e86fff
 
   VerticalList
     id: botList
@@ -170,9 +195,9 @@ PVP99ManagerWindowV5 < MainWindow
     margin-left: 12
     margin-right: 12
     margin-bottom: 8
-    background-color: #0e0b12
+    background-color: #09060d
     border-width: 1
-    border-color: #3f3150
+    border-color: #713a91
     padding: 4
 
   Panel
@@ -180,13 +205,13 @@ PVP99ManagerWindowV5 < MainWindow
     anchors.left: parent.left
     anchors.right: parent.right
     anchors.bottom: closeButton.top
-    height: 28
+    height: 30
     margin-left: 12
     margin-right: 12
     margin-bottom: 7
-    background-color: #121018
+    background-color: #0d0a12
     border-width: 1
-    border-color: #3f3150
+    border-color: #5d3374
 
     Label
       id: status
@@ -204,12 +229,12 @@ PVP99ManagerWindowV5 < MainWindow
     size: 120 30
     text: FECHAR
     color: #ffffff
-    background-color: #2b2134
+    background-color: #241a2c
     border-width: 1
-    border-color: #6b3f8f
+    border-color: #a950d1
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV5", root)
+local window = UI.createWindow("PVP99ManagerWindowV7", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
@@ -375,6 +400,35 @@ local function productAllowed(productId)
     and activeLicense.products[productId] == true
 end
 
+local function getPurchaseUrl(productId)
+  local entry = products[productId]
+
+  if type(entry) == "table"
+    and type(entry.buyUrl) == "string"
+    and entry.buyUrl ~= "" then
+    return entry.buyUrl
+  end
+
+  return PURCHASE_URLS[productId]
+end
+
+local function openPurchasePage(productId)
+  local url = getPurchaseUrl(productId)
+
+  if not url or url == "" then
+    setStatus("PAGINA DE COMPRA AINDA NAO CONFIGURADA", "#ffd36b")
+    return
+  end
+
+  setStatus("ABRINDO PAGINA DE COMPRA...", "#64ffb5")
+
+  if g_platform and g_platform.openUrl then
+    g_platform.openUrl(url)
+  else
+    setStatus("NAO FOI POSSIVEL ABRIR O NAVEGADOR", "#ff6b8a")
+  end
+end
+
 local function hasDownloadedAllowedProduct()
   for productId, entry in pairs(products) do
     if productAllowed(productId)
@@ -407,9 +461,9 @@ local function refreshRows()
         end
       else
         item.action:setEnabled(true)
-        item.action:setText("BLOQUEADO")
+        item.action:setText("COMPRAR")
         item.action:setColor("#ffffff")
-        item.action:setBackgroundColor("#2d2532")
+        item.action:setBackgroundColor("#53276d")
       end
     end
   end
@@ -421,7 +475,7 @@ local function waitForInstallComplete(productId, entry, attempts)
   if isInstalled(entry.folder) then
     busy = false
     refreshRows()
-    setStatus("BAIXADO - DESLIGUE E LIGUE O BOT PARA SELECIONAR O SEU SCRIPT", "#64ffb5")
+    setStatus("BAIXADO COM SUCESSO - DESLIGUE O BOT", "#64ffb5")
     return
   end
 
@@ -446,7 +500,7 @@ local function runInstaller(productId)
   end
 
   if isInstalled(entry.folder) then
-    setStatus("JA BAIXADO - DESLIGUE E LIGUE O BOT PARA SELECIONAR O SEU SCRIPT", "#64ffb5")
+    setStatus("JA BAIXADO - DESLIGUE O BOT", "#64ffb5")
     return
   end
 
@@ -542,7 +596,11 @@ local function renderProducts(data)
 
     if action then
       action.onClick = function()
-        runInstaller(productId)
+        if productAllowed(productId) then
+          runInstaller(productId)
+        else
+          openPurchasePage(productId)
+        end
       end
     end
   end
@@ -585,7 +643,7 @@ local function applyAuthorizedLicense(key, license)
   refreshRows()
 
   if hasDownloadedAllowedProduct() then
-    setStatus("BAIXADO - DESLIGUE E LIGUE O BOT PARA SELECIONAR O SEU SCRIPT", "#64ffb5")
+    setStatus("BAIXADO COM SUCESSO - DESLIGUE O BOT", "#64ffb5")
   else
     setStatus("LICENCA LIBERADA NESTA INSTALACAO", "#64ffb5")
   end
