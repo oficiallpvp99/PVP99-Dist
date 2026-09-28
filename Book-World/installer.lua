@@ -1,10 +1,14 @@
 -- ============================================================
--- PVP99 - BOOK WORLD INSTALLER / UPDATER V2
+-- PVP99 - BOOK WORLD INSTALLER / UPDATER V3
 -- OTCv8
+--
+-- CORRECAO:
+-- O HTTP.download do OTC baixa para a area de downloads.
+-- Para instalar uma CONFIG em /bot corretamente, usamos HTTP.get
+-- + g_resources.writeFileContents diretamente no /bot/Book-World.
 --
 -- Ao concluir 100%, cria:
 --   /bot/Book-World/.pvp99_complete
--- O Bot Manager usa esse arquivo para confirmar o download.
 -- ============================================================
 
 local OWNER = "oficiallpvp99"
@@ -25,7 +29,6 @@ local BASE_URL =
 local MANIFEST_URL = BASE_URL .. "manifest.lua"
 
 local VIRTUAL_ROOT = "/bot/" .. TARGET_NAME
-local DOWNLOAD_ROOT = "bot/" .. TARGET_NAME .. "/"
 local COMPLETE_MARKER = VIRTUAL_ROOT .. "/.pvp99_complete"
 
 local oldTimeout = HTTP.timeout
@@ -100,19 +103,7 @@ local function writeCompleteMarker()
   end
 
   g_resources.writeFileContents(COMPLETE_MARKER, value)
-
   return g_resources.fileExists(COMPLETE_MARKER)
-end
-
-local function refreshBotList()
-  if modules
-    and modules.game_bot
-    and modules.game_bot.refresh then
-
-    schedule(500, function()
-      modules.game_bot.refresh()
-    end)
-  end
 end
 
 local function installManifest(manifest)
@@ -145,6 +136,13 @@ local function installManifest(manifest)
     if not rel then
       finishTimeout()
 
+      -- Verificacao importante: uma config OTC precisa ter Lua no topo.
+      if not g_resources.fileExists(VIRTUAL_ROOT .. "/_Loader.lua")
+        and not g_resources.fileExists(VIRTUAL_ROOT .. "/a.lua") then
+        print("[PVP99] ERRO: arquivos Lua principais nao foram instalados.")
+        return
+      end
+
       if not writeCompleteMarker() then
         print("[PVP99] ERRO: nao foi possivel gravar confirmacao de instalacao.")
         return
@@ -153,9 +151,7 @@ local function installManifest(manifest)
       print("[PVP99] Book-World instalado com sucesso.")
       print("[PVP99] Pasta: " .. VIRTUAL_ROOT)
       print("[PVP99] Download confirmado.")
-      print("[PVP99] Desligue e ligue o Bot para aparecer na lista.")
-
-      refreshBotList()
+      print("[PVP99] Desligue e ligue o Bot para selecionar o seu script.")
       return
     end
 
@@ -174,10 +170,10 @@ local function installManifest(manifest)
     )
 
     local url = BASE_URL .. rel
-    local target = DOWNLOAD_ROOT .. rel
+    local target = VIRTUAL_ROOT .. "/" .. rel
 
-    HTTP.download(url, target, function(path, checksum, err)
-      if err then
+    HTTP.get(url, function(data, err)
+      if err or data == nil then
         if retry < MAX_RETRIES then
           print(
             "[PVP99] Tentando novamente "
@@ -195,6 +191,17 @@ local function installManifest(manifest)
         finishTimeout()
         print("[PVP99] ERRO baixando: " .. rel)
         print("[PVP99] " .. tostring(err))
+        return
+      end
+
+      local writeOk, writeErr = pcall(function()
+        g_resources.writeFileContents(target, data)
+      end)
+
+      if not writeOk or not g_resources.fileExists(target) then
+        finishTimeout()
+        print("[PVP99] ERRO gravando: " .. target)
+        print("[PVP99] " .. tostring(writeErr))
         return
       end
 
