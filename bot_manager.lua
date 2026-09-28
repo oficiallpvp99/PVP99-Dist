@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V7 NEON
+-- PVP99 BOT MANAGER V8 NEON EXPIRACAO
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -25,7 +25,7 @@ local SETTINGS_LICENSE = "pvp99_bot_license_key"
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV7")
+local old = root:recursiveGetChildById("pvp99BotManagerV8")
 if old then
   old:destroy()
 end
@@ -76,8 +76,8 @@ PVP99PremiumRow < Panel
     border-width: 1
     border-color: #9b52c7
 
-PVP99ManagerWindowV7 < MainWindow
-  id: pvp99BotManagerV7
+PVP99ManagerWindowV8 < MainWindow
+  id: pvp99BotManagerV8
   size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
@@ -105,10 +105,11 @@ PVP99ManagerWindowV7 < MainWindow
       text-auto-resize: true
 
     Label
+      id: expiryInfo
       anchors.bottom: parent.bottom
       anchors.horizontalCenter: parent.horizontalCenter
       margin-bottom: 9
-      text: PVP99 // SECURE DOWNLOAD CENTER
+      text: LICENCA NAO ATIVADA
       color: #cbb5d9
       font: verdana-11px-rounded
       text-auto-resize: true
@@ -234,13 +235,14 @@ PVP99ManagerWindowV7 < MainWindow
     border-color: #a950d1
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV7", root)
+local window = UI.createWindow("PVP99ManagerWindowV8", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
 local status = window:recursiveGetChildById("status")
 local licenseInput = window:recursiveGetChildById("licenseInput")
 local licenseStatus = window:recursiveGetChildById("licenseStatus")
+local expiryInfo = window:recursiveGetChildById("expiryInfo")
 local activateButton = window:recursiveGetChildById("activateButton")
 local closeButton = window:recursiveGetChildById("closeButton")
 
@@ -265,6 +267,45 @@ local function setLicenseStatus(text, color)
   if not licenseStatus then return end
   licenseStatus:setText(text)
   if color then licenseStatus:setColor(color) end
+end
+
+local function formatExpiryDate(expiresAt)
+  expiresAt = tonumber(expiresAt) or 0
+
+  if expiresAt <= 0 then
+    return "USO: PERMANENTE"
+  end
+
+  if os.date then
+    return "EXPIRA EM: " .. os.date("%d/%m/%Y", expiresAt)
+  end
+
+  return "EXPIRA EM: " .. tostring(expiresAt)
+end
+
+local function refreshExpiryInfo()
+  if not expiryInfo then return end
+
+  if type(activeLicense) ~= "table" then
+    expiryInfo:setText("LICENCA NAO ATIVADA")
+    expiryInfo:setColor("#cbb5d9")
+    return
+  end
+
+  local expiresAt = tonumber(activeLicense.expiresAt) or 0
+
+  if expiresAt > 0 and os.time and os.time() >= expiresAt then
+    expiryInfo:setText("LICENCA EXPIRADA")
+    expiryInfo:setColor("#ff6b8a")
+    return
+  end
+
+  expiryInfo:setText(formatExpiryDate(expiresAt))
+  if expiresAt == 0 then
+    expiryInfo:setColor("#64ffb5")
+  else
+    expiryInfo:setColor("#ffd36b")
+  end
 end
 
 local function normalizeKey(value)
@@ -640,6 +681,7 @@ local function applyAuthorizedLicense(key, license)
   end
 
   setLicenseStatus("ATIVA", "#64ffb5")
+  refreshExpiryInfo()
   refreshRows()
 
   if hasDownloadedAllowedProduct() then
@@ -692,6 +734,7 @@ local function checkLicense(key, allowBind)
       else
         activeLicense = nil
         activeLicenseKey = nil
+        refreshExpiryInfo()
         setLicenseStatus("OUTRO DISPOSITIVO", "#ff6b8a")
         setStatus("CHAVE JA VINCULADA A OUTRA INSTALACAO", "#ff6b8a")
         refreshRows()
@@ -748,6 +791,7 @@ local function loadSavedLicense()
 
     checkLicense(saved, false)
   else
+    refreshExpiryInfo()
     setLicenseStatus("NAO ATIVADO", "#ffd36b")
   end
 end
@@ -776,6 +820,7 @@ local function authenticateDevice(done)
         print("[PVP99] Auth error: " .. tostring(signupErr or err))
         setStatus("ERRO NA AUTENTICACAO FIREBASE", "#ff6b8a")
         setLicenseStatus("OFFLINE", "#ff6b8a")
+        refreshExpiryInfo()
         return
       end
 
@@ -804,6 +849,7 @@ end
 window:show()
 window:raise()
 window:focus()
+refreshExpiryInfo()
 
 authenticateDevice(function()
   loadProducts(function()
