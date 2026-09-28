@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V12 MULTIPLAS KEYS + SCROLL
+-- PVP99 BOT MANAGER V12 MULTIPLAS KEYS + SCROLL CORRIGIDO
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -36,8 +36,6 @@ if old then
 end
 
 g_ui.loadUIFromString([[
-PVP99BotScrollBar < SmallScrollBar
-
 PVP99PremiumRow < Panel
   height: 48
   margin-top: 3
@@ -212,7 +210,7 @@ PVP99ManagerWindowV12 < MainWindow
     anchors.bottom: statusBar.top
     margin-top: 8
     margin-left: 12
-    margin-right: 23
+    margin-right: 24
     margin-bottom: 8
     background-color: #09060d
     border-width: 1
@@ -222,7 +220,7 @@ PVP99ManagerWindowV12 < MainWindow
     layout:
       type: verticalBox
 
-  PVP99BotScrollBar
+  SmallScrollBar
     id: botScrollBar
     anchors.top: botList.top
     anchors.bottom: botList.bottom
@@ -1075,7 +1073,7 @@ local function authenticateDevice(done)
         print("[PVP99] Auth error: " .. tostring(signupErr or err))
         setStatus("ERRO NA AUTENTICACAO FIREBASE", "#ff6b8a")
         setLicenseStatus("OFFLINE", "#ff6b8a")
-        refreshExpiryInfo()
+        refreshLicenseSummary()
         return
       end
 
