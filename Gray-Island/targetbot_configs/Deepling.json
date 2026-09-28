@@ -1,0 +1,167 @@
+{
+  "looting": {
+    "items": [
+      {
+        "count": 1,
+        "id": 3035
+      },
+      {
+        "count": 1,
+        "id": 13987
+      },
+      {
+        "count": 1,
+        "id": 14247
+      },
+      {
+        "count": 1,
+        "id": 14250
+      },
+      {
+        "count": 1,
+        "id": 14009
+      },
+      {
+        "count": 1,
+        "id": 14008
+      },
+      {
+        "count": 1,
+        "id": 14010
+      },
+      {
+        "count": 1,
+        "id": 14044
+      },
+      {
+        "count": 1,
+        "id": 14012
+      },
+      {
+        "count": 1,
+        "id": 14013
+      },
+      {
+        "count": 1,
+        "id": 14041
+      },
+      {
+        "count": 1,
+        "id": 14042
+      },
+      {
+        "count": 1,
+        "id": 14043
+      },
+      {
+        "count": 1,
+        "id": 14142
+      },
+      {
+        "count": 1,
+        "id": 14040
+      },
+      {
+        "count": 1,
+        "id": 14079
+      },
+      {
+        "count": 1,
+        "id": 14225
+      },
+      {
+        "count": 1,
+        "id": 14083
+      },
+      {
+        "count": 1,
+        "id": 14081
+      },
+      {
+        "count": 1,
+        "id": 14080
+      },
+      {
+        "count": 1,
+        "id": 14077
+      },
+      {
+        "count": 1,
+        "id": 14078
+      },
+      {
+        "count": 1,
+        "id": 14082
+      },
+      {
+        "count": 1,
+        "id": 14088
+      },
+      {
+        "count": 1,
+        "id": 14086
+      },
+      {
+        "count": 1,
+        "id": 14089
+      },
+      {
+        "count": 1,
+        "id": 14087
+      },
+      {
+        "count": 1,
+        "id": 14248
+      },
+      {
+        "count": 1,
+        "id": 13990
+      },
+      {
+        "count": 1,
+        "id": 5895
+      }
+    ],
+    "maxDanger": 5,
+    "minCapacity": 1,
+    "containers": [
+      {
+        "count": 1,
+        "id": 2854
+      }
+    ],
+    "everyItem": false
+  },
+  "targeting": [
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 1,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^deepling elite$|^spidris elite$|^spitter$|^spidris$|^kollos$|^crawler$|^waspoid$|^insectoid worker$|^deepling tyrant$|^deepling master librarian$|^deepling warrior$|^deepling guard$|^manta ray$|^deepling spellsinger$|^jellyfish$|^shark$|^deepl$|^deepling scouting warrior$|^deepling scout$",
+      "chase": true,
+      "priority": 1,
+      "keepDistance": false,
+      "closeLure": false,
+      "danger": 1,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "dynamicLureDelay": false,
+      "dynamicLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Deepling Elite,Spidris Elite,Spitter,Spidris,Kollos,Crawler,Waspoid,Insectoid Worker,Deepling Tyrant,Deepling Master Librarian,Deepling Warrior,Deepling Guard,Manta Ray,Deepling Spellsinger,Jellyfish,Shark,Deepl,Deepling Scouting Warrior,Deepling Scout",
+      "rpSafe": false
+    }
+  ]
+}
