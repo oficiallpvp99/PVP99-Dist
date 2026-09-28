@@ -187,7 +187,7 @@ PVP99ManagerWindowV11 < MainWindow
       margin-bottom: 10
       size: 310 28
       text: ""
-      color: #272727
+      color: #fffafa
 
     Button
       id: activateButton
