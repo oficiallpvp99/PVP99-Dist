@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V9 NEON DIAS RESTANTES
+-- PVP99 BOT MANAGER V10 NEON REGISTRA ATIVACAO
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -25,7 +25,7 @@ local SETTINGS_LICENSE = "pvp99_bot_license_key"
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV9")
+local old = root:recursiveGetChildById("pvp99BotManagerV10")
 if old then
   old:destroy()
 end
@@ -76,8 +76,8 @@ PVP99PremiumRow < Panel
     border-width: 1
     border-color: #9b52c7
 
-PVP99ManagerWindowV9 < MainWindow
-  id: pvp99BotManagerV9
+PVP99ManagerWindowV10 < MainWindow
+  id: pvp99BotManagerV10
   size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
@@ -235,7 +235,7 @@ PVP99ManagerWindowV9 < MainWindow
     border-color: #a950d1
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV9", root)
+local window = UI.createWindow("PVP99ManagerWindowV10", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
@@ -766,9 +766,17 @@ local function checkLicense(key, allowBind)
 
     setLicenseStatus("VINCULANDO...", "#ffd36b")
 
+    local activationTime = 0
+    if os.time then
+      activationTime = os.time()
+    end
+
     HTTP.postJSON(
       firebasePath("licenses/" .. key .. "/binding"),
-      { uid = auth.uid },
+      {
+        uid = auth.uid,
+        activatedAt = activationTime
+      },
       function(result, bindErr)
         if bindErr then
           print("[PVP99] Erro binding: " .. tostring(bindErr))
