@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V12 MULTIPLAS KEYS + SCROLL CORRIGIDO
+-- PVP99 BOT MANAGER V13 MULTIPLAS KEYS + PAGINACAO
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -30,7 +30,7 @@ local LEGACY_SETTINGS_LICENSE = "pvp99_bot_license_key"
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV12")
+local old = root:recursiveGetChildById("pvp99BotManagerV13")
 if old then
   old:destroy()
 end
@@ -92,8 +92,8 @@ PVP99PremiumRow < Panel
     border-width: 1
     border-color: #9b52c7
 
-PVP99ManagerWindowV12 < MainWindow
-  id: pvp99BotManagerV12
+PVP99ManagerWindowV13 < MainWindow
+  id: pvp99BotManagerV13
   size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
@@ -202,32 +202,65 @@ PVP99ManagerWindowV12 < MainWindow
       border-width: 1
       border-color: #e86fff
 
-  ScrollablePanel
+  VerticalList
     id: botList
     anchors.top: licensePanel.bottom
     anchors.left: parent.left
     anchors.right: parent.right
-    anchors.bottom: statusBar.top
+    anchors.bottom: pagePanel.top
     margin-top: 8
     margin-left: 12
-    margin-right: 24
-    margin-bottom: 8
+    margin-right: 12
+    margin-bottom: 6
     background-color: #09060d
     border-width: 1
     border-color: #713a91
     padding: 4
-    vertical-scrollbar: botScrollBar
-    layout:
-      type: verticalBox
 
-  SmallScrollBar
-    id: botScrollBar
-    anchors.top: botList.top
-    anchors.bottom: botList.bottom
+  Panel
+    id: pagePanel
+    anchors.left: parent.left
     anchors.right: parent.right
+    anchors.bottom: statusBar.top
+    height: 26
+    margin-left: 12
     margin-right: 12
-    step: 54
-    pixels-scroll: true
+    margin-bottom: 5
+    background-color: #0d0813
+    border-width: 1
+    border-color: #5d3374
+
+    Button
+      id: prevPageButton
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 5
+      size: 82 20
+      text: ANTERIOR
+      color: #ffffff
+      background-color: #241a2c
+      border-width: 1
+      border-color: #8d44b5
+
+    Label
+      id: pageLabel
+      anchors.centerIn: parent
+      text: PAGINA 1/1
+      color: #cbb5d9
+      font: verdana-11px-rounded
+      text-auto-resize: true
+
+    Button
+      id: nextPageButton
+      anchors.right: parent.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 5
+      size: 82 20
+      text: PROXIMA
+      color: #ffffff
+      background-color: #241a2c
+      border-width: 1
+      border-color: #8d44b5
 
   Panel
     id: statusBar
@@ -263,7 +296,7 @@ PVP99ManagerWindowV12 < MainWindow
     border-color: #a950d1
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV12", root)
+local window = UI.createWindow("PVP99ManagerWindowV13", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
@@ -272,6 +305,9 @@ local licenseInput = window:recursiveGetChildById("licenseInput")
 local licenseStatus = window:recursiveGetChildById("licenseStatus")
 local expiryInfo = window:recursiveGetChildById("expiryInfo")
 local activateButton = window:recursiveGetChildById("activateButton")
+local prevPageButton = window:recursiveGetChildById("prevPageButton")
+local nextPageButton = window:recursiveGetChildById("nextPageButton")
+local pageLabel = window:recursiveGetChildById("pageLabel")
 local closeButton = window:recursiveGetChildById("closeButton")
 
 local auth = {
@@ -281,6 +317,9 @@ local auth = {
 
 local products = {}
 local rows = {}
+local orderedProducts = {}
+local currentPage = 1
+local PRODUCTS_PER_PAGE = 2
 
 -- Uma licença independente por produto/bot.
 local activeLicenses = {}
@@ -735,70 +774,115 @@ local function runInstaller(productId)
   end)
 end
 
-local function renderProducts(data)
-  products = type(data) == "table" and data or {}
+local function totalPages()
+  local total = #orderedProducts
+
+  if total <= 0 then
+    return 1
+  end
+
+  return math.max(1, math.ceil(total / PRODUCTS_PER_PAGE))
+end
+
+local function updatePageControls()
+  local pages = totalPages()
+
+  if currentPage < 1 then
+    currentPage = 1
+  elseif currentPage > pages then
+    currentPage = pages
+  end
+
+  if pageLabel then
+    pageLabel:setText("PAGINA " .. currentPage .. "/" .. pages)
+  end
+
+  if prevPageButton then
+    prevPageButton:setEnabled(currentPage > 1)
+  end
+
+  if nextPageButton then
+    nextPageButton:setEnabled(currentPage < pages)
+  end
+end
+
+local function renderCurrentPage()
   rows = {}
 
   if not botList then return end
   botList:destroyChildren()
 
-  local ordered = {}
+  local first = ((currentPage - 1) * PRODUCTS_PER_PAGE) + 1
+  local last = math.min(first + PRODUCTS_PER_PAGE - 1, #orderedProducts)
+
+  for index = first, last do
+    local item = orderedProducts[index]
+
+    if item then
+      local productId = item.id
+      local entry = item.data
+      local row = g_ui.createWidget("PVP99PremiumRow", botList)
+      row.botWidget = true
+
+      local name = row:recursiveGetChildById("botName")
+      local expiry = row:recursiveGetChildById("botExpiry")
+      local price = row:recursiveGetChildById("botPrice")
+      local action = row:recursiveGetChildById("action")
+
+      if name then
+        name:setText(tostring(entry.name or productId))
+      end
+
+      if price then
+        price:setText(priceText(entry.price))
+      end
+
+      rows[productId] = {
+        row = row,
+        expiry = expiry,
+        action = action
+      }
+
+      if action then
+        action.onClick = function()
+          if productAllowed(productId) then
+            runInstaller(productId)
+          else
+            openPurchasePage(productId)
+          end
+        end
+      end
+    end
+  end
+
+  updatePageControls()
+  refreshRows()
+end
+
+local function renderProducts(data)
+  products = type(data) == "table" and data or {}
+  orderedProducts = {}
+  currentPage = 1
 
   for id, entry in pairs(products) do
     if type(entry) == "table" and entry.active ~= false then
-      table.insert(ordered, {
+      table.insert(orderedProducts, {
         id = id,
         data = entry
       })
     end
   end
 
-  table.sort(ordered, function(a, b)
+  table.sort(orderedProducts, function(a, b)
     return tostring(a.data.name or a.id) < tostring(b.data.name or b.id)
   end)
 
-  for _, item in ipairs(ordered) do
-    local productId = item.id
-    local entry = item.data
-    local row = g_ui.createWidget("PVP99PremiumRow", botList)
-    row.botWidget = true
+  renderCurrentPage()
 
-    local name = row:recursiveGetChildById("botName")
-    local expiry = row:recursiveGetChildById("botExpiry")
-    local price = row:recursiveGetChildById("botPrice")
-    local action = row:recursiveGetChildById("action")
-
-    if name then
-      name:setText(tostring(entry.name or productId))
-    end
-
-    if price then
-      price:setText(priceText(entry.price))
-    end
-
-    rows[productId] = {
-      row = row,
-      expiry = expiry,
-      action = action
-    }
-
-    if action then
-      action.onClick = function()
-        if productAllowed(productId) then
-          runInstaller(productId)
-        else
-          openPurchasePage(productId)
-        end
-      end
-    end
-  end
-
-  refreshRows()
-
-  if #ordered == 0 then
+  if #orderedProducts == 0 then
     setStatus("NENHUM BOT DISPONIVEL", "#ff6b8a")
   else
-    setStatus(#ordered .. " BOT(S) DISPONIVEL(IS)", "#64ffb5")
+    setStatus(#orderedProducts .. " BOT(S) DISPONIVEL(IS)", "#64ffb5")
   end
 end
 
@@ -1087,6 +1171,24 @@ if activateButton then
   activateButton.onClick = function()
     if busy then return end
     checkLicense(licenseInput and licenseInput:getText() or "", true, false)
+  end
+end
+
+if prevPageButton then
+  prevPageButton.onClick = function()
+    if currentPage > 1 then
+      currentPage = currentPage - 1
+      renderCurrentPage()
+    end
+  end
+end
+
+if nextPageButton then
+  nextPageButton.onClick = function()
+    if currentPage < totalPages() then
+      currentPage = currentPage + 1
+      renderCurrentPage()
+    end
   end
 end
 
