@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V4
+-- PVP99 BOT MANAGER V5
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -21,7 +21,7 @@ local SETTINGS_LICENSE = "pvp99_bot_license_key"
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV4")
+local old = root:recursiveGetChildById("pvp99BotManagerV5")
 if old then
   old:destroy()
 end
@@ -65,8 +65,8 @@ PVP99PremiumRow < Panel
     border-width: 1
     border-color: #6b3f8f
 
-PVP99ManagerWindowV4 < MainWindow
-  id: pvp99BotManagerV4
+PVP99ManagerWindowV5 < MainWindow
+  id: pvp99BotManagerV5
   size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
@@ -209,7 +209,7 @@ PVP99ManagerWindowV4 < MainWindow
     border-color: #6b3f8f
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV4", root)
+local window = UI.createWindow("PVP99ManagerWindowV5", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
@@ -375,6 +375,18 @@ local function productAllowed(productId)
     and activeLicense.products[productId] == true
 end
 
+local function hasDownloadedAllowedProduct()
+  for productId, entry in pairs(products) do
+    if productAllowed(productId)
+      and type(entry) == "table"
+      and isInstalled(entry.folder) then
+      return true
+    end
+  end
+
+  return false
+end
+
 local function refreshRows()
   for productId, item in pairs(rows) do
     local entry = products[productId]
@@ -409,7 +421,7 @@ local function waitForInstallComplete(productId, entry, attempts)
   if isInstalled(entry.folder) then
     busy = false
     refreshRows()
-    setStatus("BAIXADO - DESLIGUE E LIGUE O BOT PARA APARECER NA LISTA", "#64ffb5")
+    setStatus("BAIXADO - DESLIGUE E LIGUE O BOT PARA SELECIONAR O SEU SCRIPT", "#64ffb5")
     return
   end
 
@@ -434,7 +446,7 @@ local function runInstaller(productId)
   end
 
   if isInstalled(entry.folder) then
-    setStatus("JA BAIXADO - DESLIGUE E LIGUE O BOT PARA APARECER NA LISTA", "#64ffb5")
+    setStatus("JA BAIXADO - DESLIGUE E LIGUE O BOT PARA SELECIONAR O SEU SCRIPT", "#64ffb5")
     return
   end
 
@@ -570,8 +582,13 @@ local function applyAuthorizedLicense(key, license)
   end
 
   setLicenseStatus("ATIVA", "#64ffb5")
-  setStatus("LICENCA LIBERADA NESTA INSTALACAO", "#64ffb5")
   refreshRows()
+
+  if hasDownloadedAllowedProduct() then
+    setStatus("BAIXADO - DESLIGUE E LIGUE O BOT PARA SELECIONAR O SEU SCRIPT", "#64ffb5")
+  else
+    setStatus("LICENCA LIBERADA NESTA INSTALACAO", "#64ffb5")
+  end
 end
 
 local function checkLicense(key, allowBind)
