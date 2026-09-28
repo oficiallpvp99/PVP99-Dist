@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V3
+-- PVP99 BOT MANAGER V4
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -21,7 +21,7 @@ local SETTINGS_LICENSE = "pvp99_bot_license_key"
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV3")
+local old = root:recursiveGetChildById("pvp99BotManagerV4")
 if old then
   old:destroy()
 end
@@ -65,8 +65,8 @@ PVP99PremiumRow < Panel
     border-width: 1
     border-color: #6b3f8f
 
-PVP99ManagerWindowV3 < MainWindow
-  id: pvp99BotManagerV3
+PVP99ManagerWindowV4 < MainWindow
+  id: pvp99BotManagerV4
   size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
@@ -145,7 +145,7 @@ PVP99ManagerWindowV3 < MainWindow
       margin-bottom: 10
       size: 310 28
       text: ""
-      color: #fffafa
+      color: #272727
 
     Button
       id: activateButton
@@ -209,7 +209,7 @@ PVP99ManagerWindowV3 < MainWindow
     border-color: #6b3f8f
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV3", root)
+local window = UI.createWindow("PVP99ManagerWindowV4", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
@@ -306,12 +306,17 @@ local function firebasePath(path)
   return DATABASE_URL .. "/" .. path .. ".json?auth=" .. auth.token
 end
 
+local function installMarker(folder)
+  return "/bot/" .. tostring(folder or "") .. "/.pvp99_complete"
+end
+
 local function isInstalled(folder)
   if type(folder) ~= "string" or folder == "" then
     return false
   end
 
   return g_resources.directoryExists("/bot/" .. folder)
+    and g_resources.fileExists(installMarker(folder))
 end
 
 local function priceText(price)
@@ -378,15 +383,46 @@ local function refreshRows()
     if item and item.action and entry then
       if allowed then
         item.action:setEnabled(true)
-        item.action:setText(isInstalled(entry.folder) and "ATUALIZAR" or "BAIXAR")
-        item.action:setBackgroundColor("#43245d")
+
+        if isInstalled(entry.folder) then
+          item.action:setText("BAIXADO")
+          item.action:setColor("#64ffb5")
+          item.action:setBackgroundColor("#173326")
+        else
+          item.action:setText("BAIXAR")
+          item.action:setColor("#ffffff")
+          item.action:setBackgroundColor("#43245d")
+        end
       else
         item.action:setEnabled(true)
         item.action:setText("BLOQUEADO")
+        item.action:setColor("#ffffff")
         item.action:setBackgroundColor("#2d2532")
       end
     end
   end
+end
+
+local function waitForInstallComplete(productId, entry, attempts)
+  attempts = attempts or 0
+
+  if isInstalled(entry.folder) then
+    busy = false
+    refreshRows()
+    setStatus("BAIXADO - DESLIGUE E LIGUE O BOT PARA APARECER NA LISTA", "#64ffb5")
+    return
+  end
+
+  if attempts >= 240 then
+    busy = false
+    refreshRows()
+    setStatus("DOWNLOAD AINDA NAO FOI CONFIRMADO", "#ffd36b")
+    return
+  end
+
+  schedule(500, function()
+    waitForInstallComplete(productId, entry, attempts + 1)
+  end)
 end
 
 local function runInstaller(productId)
@@ -397,21 +433,26 @@ local function runInstaller(productId)
     return
   end
 
+  if isInstalled(entry.folder) then
+    setStatus("JA BAIXADO - DESLIGUE E LIGUE O BOT PARA APARECER NA LISTA", "#64ffb5")
+    return
+  end
+
   if busy then return end
   busy = true
 
   local row = rows[productId]
   if row and row.action then
     row.action:setEnabled(false)
-    row.action:setText("AGUARDE...")
+    row.action:setColor("#ffd36b")
+    row.action:setText("BAIXANDO...")
   end
 
-  setStatus("CARREGANDO " .. tostring(entry.name or productId) .. "...", "#ffd36b")
+  setStatus("INICIANDO DOWNLOAD DE " .. tostring(entry.name or productId) .. "...", "#ffd36b")
 
   HTTP.get(DIST_BASE .. tostring(entry.installer or ""), function(script, err)
-    busy = false
-
     if err or not script or script == "" then
+      busy = false
       setStatus("ERRO AO BAIXAR INSTALADOR", "#ff6b8a")
       refreshRows()
       return
@@ -420,6 +461,7 @@ local function runInstaller(productId)
     local fn, loadErr = loadstring(script)
 
     if not fn then
+      busy = false
       print("[PVP99] " .. tostring(loadErr))
       setStatus("ERRO NO INSTALADOR", "#ff6b8a")
       refreshRows()
@@ -429,14 +471,15 @@ local function runInstaller(productId)
     local ok, runErr = pcall(fn)
 
     if not ok then
+      busy = false
       print("[PVP99] " .. tostring(runErr))
       setStatus("ERRO AO EXECUTAR INSTALADOR", "#ff6b8a")
       refreshRows()
       return
     end
 
-    setStatus("INSTALADOR INICIADO", "#64ffb5")
-    refreshRows()
+    setStatus("BAIXANDO ARQUIVOS... AGUARDE", "#ffd36b")
+    waitForInstallComplete(productId, entry, 0)
   end)
 end
 
