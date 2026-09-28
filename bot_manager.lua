@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V11 MULTIPLAS KEYS
+-- PVP99 BOT MANAGER V12 MULTIPLAS KEYS + SCROLL CORRIGIDO
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -30,7 +30,7 @@ local LEGACY_SETTINGS_LICENSE = "pvp99_bot_license_key"
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV11")
+local old = root:recursiveGetChildById("pvp99BotManagerV12")
 if old then
   old:destroy()
 end
@@ -92,8 +92,8 @@ PVP99PremiumRow < Panel
     border-width: 1
     border-color: #9b52c7
 
-PVP99ManagerWindowV11 < MainWindow
-  id: pvp99BotManagerV11
+PVP99ManagerWindowV12 < MainWindow
+  id: pvp99BotManagerV12
   size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
@@ -202,7 +202,7 @@ PVP99ManagerWindowV11 < MainWindow
       border-width: 1
       border-color: #e86fff
 
-  VerticalList
+  ScrollablePanel
     id: botList
     anchors.top: licensePanel.bottom
     anchors.left: parent.left
@@ -210,12 +210,24 @@ PVP99ManagerWindowV11 < MainWindow
     anchors.bottom: statusBar.top
     margin-top: 8
     margin-left: 12
-    margin-right: 12
+    margin-right: 24
     margin-bottom: 8
     background-color: #09060d
     border-width: 1
     border-color: #713a91
     padding: 4
+    vertical-scrollbar: botScrollBar
+    layout:
+      type: verticalBox
+
+  SmallScrollBar
+    id: botScrollBar
+    anchors.top: botList.top
+    anchors.bottom: botList.bottom
+    anchors.right: parent.right
+    margin-right: 12
+    step: 54
+    pixels-scroll: true
 
   Panel
     id: statusBar
@@ -251,7 +263,7 @@ PVP99ManagerWindowV11 < MainWindow
     border-color: #a950d1
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV11", root)
+local window = UI.createWindow("PVP99ManagerWindowV12", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
@@ -1061,7 +1073,7 @@ local function authenticateDevice(done)
         print("[PVP99] Auth error: " .. tostring(signupErr or err))
         setStatus("ERRO NA AUTENTICACAO FIREBASE", "#ff6b8a")
         setLicenseStatus("OFFLINE", "#ff6b8a")
-        refreshExpiryInfo()
+        refreshLicenseSummary()
         return
       end
 
