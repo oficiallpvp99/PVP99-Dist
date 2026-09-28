@@ -1,5 +1,5 @@
 -- ============================================================
--- PVP99 BOT MANAGER V8 NEON EXPIRACAO
+-- PVP99 BOT MANAGER V9 NEON DIAS RESTANTES
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
 -- Painel gratuito / downloads liberados por produto
 -- ============================================================
@@ -25,7 +25,7 @@ local SETTINGS_LICENSE = "pvp99_bot_license_key"
 local root = g_ui.getRootWidget()
 if not root then return end
 
-local old = root:recursiveGetChildById("pvp99BotManagerV8")
+local old = root:recursiveGetChildById("pvp99BotManagerV9")
 if old then
   old:destroy()
 end
@@ -76,8 +76,8 @@ PVP99PremiumRow < Panel
     border-width: 1
     border-color: #9b52c7
 
-PVP99ManagerWindowV8 < MainWindow
-  id: pvp99BotManagerV8
+PVP99ManagerWindowV9 < MainWindow
+  id: pvp99BotManagerV9
   size: 480 430
   text: PVP99 BOT MANAGER
   @onEscape: self:hide()
@@ -235,7 +235,7 @@ PVP99ManagerWindowV8 < MainWindow
     border-color: #a950d1
 ]])
 
-local window = UI.createWindow("PVP99ManagerWindowV8", root)
+local window = UI.createWindow("PVP99ManagerWindowV9", root)
 if not window then return end
 
 local botList = window:recursiveGetChildById("botList")
@@ -276,11 +276,27 @@ local function formatExpiryDate(expiresAt)
     return "USO: PERMANENTE"
   end
 
-  if os.date then
-    return "EXPIRA EM: " .. os.date("%d/%m/%Y", expiresAt)
+  local now = os.time and os.time() or 0
+  local remaining = expiresAt - now
+
+  if remaining <= 0 then
+    return "LICENCA EXPIRADA"
   end
 
-  return "EXPIRA EM: " .. tostring(expiresAt)
+  local days = math.ceil(remaining / 86400)
+
+  if days <= 1 then
+    if os.date then
+      return "EXPIRA EM 1 DIA - " .. os.date("%d/%m/%Y", expiresAt)
+    end
+    return "EXPIRA EM 1 DIA"
+  end
+
+  if os.date then
+    return "EXPIRA EM " .. days .. " DIAS - " .. os.date("%d/%m/%Y", expiresAt)
+  end
+
+  return "EXPIRA EM " .. days .. " DIAS"
 end
 
 local function refreshExpiryInfo()
