@@ -1,0 +1,241 @@
+{
+  "looting": {
+    "items": [
+      {
+        "count": 1,
+        "id": 3369
+      },
+      {
+        "count": 1,
+        "id": 9694
+      },
+      {
+        "count": 1,
+        "id": 3029
+      },
+      {
+        "count": 1,
+        "id": 3370
+      },
+      {
+        "count": 0,
+        "id": 3031
+      },
+      {
+        "count": 1,
+        "id": 3035
+      },
+      {
+        "count": 1,
+        "id": 3392
+      },
+      {
+        "count": 1,
+        "id": 3081
+      },
+      {
+        "count": 1,
+        "id": 818
+      },
+      {
+        "count": 1,
+        "id": 814
+      },
+      {
+        "count": 1,
+        "id": 10309
+      },
+      {
+        "count": 1,
+        "id": 3436
+      },
+      {
+        "count": 1,
+        "id": 3371
+      },
+      {
+        "count": 1,
+        "id": 3079
+      },
+      {
+        "count": 1,
+        "id": 3381
+      },
+      {
+        "count": 1,
+        "id": 8052
+      },
+      {
+        "count": 1,
+        "id": 811
+      },
+      {
+        "count": 1,
+        "id": 812
+      },
+      {
+        "count": 1,
+        "id": 3032
+      },
+      {
+        "count": 1,
+        "id": 7386
+      },
+      {
+        "count": 1,
+        "id": 7456
+      },
+      {
+        "count": 1,
+        "id": 6499
+      },
+      {
+        "count": 3,
+        "id": 9057
+      },
+      {
+        "count": 1,
+        "id": 7452
+      },
+      {
+        "count": 1,
+        "id": 7413
+      },
+      {
+        "count": 1,
+        "id": 9302
+      }
+    ],
+    "maxDanger": 1,
+    "minCapacity": 100,
+    "containers": [
+      {
+        "count": 1,
+        "id": 2854
+      }
+    ],
+    "everyItem": false
+  },
+  "targeting": [
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 2,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^hellspawn$|^hydra$|^serpent spawn$",
+      "dynamicLureDelay": false,
+      "priority": 1,
+      "dynamicLure": false,
+      "keepDistance": false,
+      "danger": 10,
+      "chase": true,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "closeLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Hellspawn,Hydra,Serpent Spawn",
+      "rpSafe": false
+    },
+    {
+      "lureDelay": 250,
+      "lureMin": 3,
+      "maxDistance": 1,
+      "anchorRange": 1,
+      "lureCount": 2,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^cobra$|^tarantula$|^carniphila$",
+      "chase": false,
+      "priority": 1,
+      "keepDistance": false,
+      "closeLure": false,
+      "danger": 1,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "dynamicLureDelay": false,
+      "dynamicLure": false,
+      "faceMonster": false,
+      "lureCavebot": true,
+      "dontLoot": true,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Cobra,Tarantula,Carniphila",
+      "rpSafe": false
+    },
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 1,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "rpSafe": false,
+      "chase": true,
+      "priority": 1,
+      "name": "Behemoth",
+      "keepDistance": false,
+      "keepDistanceRange": 1,
+      "dynamicLureDelay": false,
+      "danger": 1,
+      "delayFrom": 2,
+      "closeLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "lure": false,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "dynamicLure": false,
+      "regex": "^behemoth$"
+    },
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 2,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^medusa$",
+      "dynamicLureDelay": false,
+      "priority": 1,
+      "dynamicLure": false,
+      "keepDistance": false,
+      "danger": 1,
+      "chase": true,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "closeLure": false,
+      "faceMonster": false,
+      "lureCavebot": true,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Medusa",
+      "rpSafe": false
+    }
+  ]
+}
