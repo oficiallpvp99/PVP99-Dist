@@ -1,0 +1,245 @@
+{
+  "looting": {
+    "items": [
+      {
+        "count": 1,
+        "id": 3035
+      },
+      {
+        "count": 1,
+        "id": 16119
+      },
+      {
+        "count": 1,
+        "id": 3081
+      },
+      {
+        "count": 1,
+        "id": 16122
+      },
+      {
+        "count": 1,
+        "id": 16123
+      },
+      {
+        "count": 1,
+        "id": 16124
+      },
+      {
+        "count": 1,
+        "id": 5880
+      },
+      {
+        "count": 1,
+        "id": 20200
+      },
+      {
+        "count": 1,
+        "id": 7454
+      },
+      {
+        "count": 1,
+        "id": 7404
+      },
+      {
+        "count": 1,
+        "id": 7407
+      },
+      {
+        "count": 1,
+        "id": 9058
+      },
+      {
+        "count": 1,
+        "id": 3428
+      },
+      {
+        "count": 1,
+        "id": 16121
+      },
+      {
+        "count": 1,
+        "id": 3048
+      },
+      {
+        "count": 1,
+        "id": 3079
+      },
+      {
+        "count": 1,
+        "id": 7418
+      },
+      {
+        "count": 1,
+        "id": 3344
+      },
+      {
+        "count": 1,
+        "id": 7413
+      },
+      {
+        "count": 1,
+        "id": 812
+      },
+      {
+        "count": 1,
+        "id": 7451
+      },
+      {
+        "count": 1,
+        "id": 3419
+      },
+      {
+        "count": 1,
+        "id": 7387
+      },
+      {
+        "count": 1,
+        "id": 7412
+      },
+      {
+        "count": 1,
+        "id": 7452
+      },
+      {
+        "count": 1,
+        "id": 3280
+      },
+      {
+        "count": 1,
+        "id": 7386
+      },
+      {
+        "count": 1,
+        "id": 20199
+      },
+      {
+        "count": 1,
+        "id": 20201
+      },
+      {
+        "count": 1,
+        "id": 20198
+      },
+      {
+        "count": 1,
+        "id": 813
+      },
+      {
+        "count": 1,
+        "id": 16126
+      },
+      {
+        "count": 1,
+        "id": 16120
+      },
+      {
+        "count": 1,
+        "id": 20205
+      },
+      {
+        "count": 1,
+        "id": 20207
+      },
+      {
+        "count": 1,
+        "id": 20206
+      },
+      {
+        "count": 1,
+        "id": 8082
+      },
+      {
+        "count": 1,
+        "id": 8092
+      },
+      {
+        "count": 1,
+        "id": 811
+      },
+      {
+        "count": 1,
+        "id": 3554
+      },
+      {
+        "count": 1,
+        "id": 8084
+      },
+      {
+        "count": 1,
+        "id": 7421
+      }
+    ],
+    "maxDanger": 10,
+    "minCapacity": 100,
+    "containers": [
+      {
+        "count": 1,
+        "id": 2854
+      }
+    ],
+    "everyItem": false
+  },
+  "targeting": [
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 3,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 4,
+      "rpSafe": false,
+      "chase": true,
+      "priority": 1,
+      "name": "Choking Fear,Retching Horror,Retching Horror,Guzzlemaw,Frazzlemaw",
+      "keepDistance": false,
+      "keepDistanceRange": 1,
+      "danger": 1,
+      "dynamicLureDelay": false,
+      "delayFrom": 2,
+      "closeLure": false,
+      "faceMonster": false,
+      "lureCavebot": true,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "lure": false,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "dynamicLure": false,
+      "regex": "^choking fear$|^retching horror$|^retching horror$|^guzzlemaw$|^frazzlemaw$"
+    },
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 1,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^silencer$",
+      "chase": true,
+      "priority": 10,
+      "keepDistance": false,
+      "closeLure": false,
+      "danger": 1,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "dynamicLureDelay": false,
+      "dynamicLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Silencer",
+      "rpSafe": false
+    }
+  ]
+}
