@@ -1,0 +1,281 @@
+{
+  "looting": {
+    "items": [
+      {
+        "count": 1,
+        "id": 3420
+      },
+      {
+        "count": 1,
+        "id": 3281
+      },
+      {
+        "count": 1,
+        "id": 3320
+      },
+      {
+        "count": 1,
+        "id": 3035
+      },
+      {
+        "count": 1,
+        "id": 7418
+      },
+      {
+        "count": 1,
+        "id": 9057
+      },
+      {
+        "count": 1,
+        "id": 3028
+      },
+      {
+        "count": 1,
+        "id": 282
+      },
+      {
+        "count": 1,
+        "id": 3030
+      },
+      {
+        "count": 1,
+        "id": 22730
+      },
+      {
+        "count": 1,
+        "id": 3032
+      },
+      {
+        "count": 1,
+        "id": 3033
+      },
+      {
+        "count": 1,
+        "id": 7382
+      },
+      {
+        "count": 1,
+        "id": 3360
+      },
+      {
+        "count": 1,
+        "id": 22726
+      },
+      {
+        "count": 1,
+        "id": 22866
+      },
+      {
+        "count": 1,
+        "id": 22727
+      },
+      {
+        "count": 1,
+        "id": 3063
+      },
+      {
+        "count": 1,
+        "id": 22728
+      },
+      {
+        "count": 1,
+        "id": 8082
+      },
+      {
+        "count": 1,
+        "id": 8094
+      },
+      {
+        "count": 1,
+        "id": 3414
+      },
+      {
+        "count": 1,
+        "id": 3364
+      },
+      {
+        "count": 1,
+        "id": 3366
+      },
+      {
+        "count": 1,
+        "id": 22867
+      },
+      {
+        "count": 1,
+        "id": 3554
+      },
+      {
+        "count": 1,
+        "id": 3048
+      },
+      {
+        "count": 1,
+        "id": 7414
+      },
+      {
+        "count": 1,
+        "id": 7413
+      },
+      {
+        "count": 1,
+        "id": 7388
+      },
+      {
+        "count": 1,
+        "id": 9058
+      },
+      {
+        "count": 1,
+        "id": 6499
+      },
+      {
+        "count": 1,
+        "id": 821
+      },
+      {
+        "count": 1,
+        "id": 3371
+      },
+      {
+        "count": 1,
+        "id": 3342
+      },
+      {
+        "count": 1,
+        "id": 3340
+      }
+    ],
+    "maxDanger": 10,
+    "minCapacity": 100,
+    "containers": [
+      {
+        "count": 1,
+        "id": 2854
+      }
+    ],
+    "everyItem": false
+  },
+  "targeting": [
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 1,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "rpSafe": false,
+      "chase": true,
+      "priority": 10,
+      "name": "Vexclaw,Grimeleech",
+      "keepDistance": false,
+      "keepDistanceRange": 1,
+      "dynamicLureDelay": false,
+      "danger": 1,
+      "delayFrom": 2,
+      "closeLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "lure": false,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "dynamicLure": false,
+      "regex": "^vexclaw$|^grimeleech$"
+    },
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 2,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "rpSafe": false,
+      "chase": true,
+      "priority": 1,
+      "name": "Hellflayer",
+      "keepDistance": false,
+      "keepDistanceRange": 1,
+      "dynamicLureDelay": false,
+      "danger": 10,
+      "delayFrom": 2,
+      "closeLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "lure": false,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "dynamicLure": false,
+      "regex": "^hellflayer$"
+    },
+    {
+      "lureDelay": 250,
+      "lureMin": 2,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 2,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^plaguesmith$",
+      "dynamicLureDelay": false,
+      "priority": 1,
+      "dynamicLure": false,
+      "keepDistance": false,
+      "danger": 1,
+      "chase": true,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "closeLure": false,
+      "faceMonster": false,
+      "lureCavebot": true,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Plaguesmith",
+      "rpSafe": false
+    },
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 1,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^juggernaut$",
+      "chase": true,
+      "priority": 1,
+      "keepDistance": false,
+      "closeLure": false,
+      "danger": 1,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "dynamicLureDelay": false,
+      "dynamicLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Juggernaut",
+      "rpSafe": false
+    }
+  ]
+}
