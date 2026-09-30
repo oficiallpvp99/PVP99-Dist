@@ -1,0 +1,2460 @@
+{
+  "hpitem1": {
+    "max": 70,
+    "title": "HP%",
+    "subType": 0,
+    "item": 23375,
+    "min": 0,
+    "on": true
+  },
+  "monsterKill": {
+    "min": false
+  },
+  "caveBotTasker": {
+    "max": 800,
+    "monster": "serpent spawn",
+    "inProgress": true,
+    "count": 8,
+    "taskName": "serpent spawns",
+    "monster2": ""
+  },
+  "specialDeposit": {
+    "height": 380,
+    "items": [
+      {
+        "id": 14079,
+        "index": 5
+      },
+      {
+        "id": 14081,
+        "index": 4
+      }
+    ]
+  },
+  "ingame_hotkeys": "",
+  "healing2": {
+    "max": 76,
+    "title": "HP%",
+    "on": false,
+    "min": 0,
+    "text": "exura gran"
+  },
+  "analyzers": {
+    "lootChannel": false,
+    "customPrices": [
+
+    ],
+    "trackedLoot": [
+
+    ],
+    "trackedBoss": [
+
+    ],
+    "rarityFrames": true,
+    "outfits": {
+      "Ankuns": {
+        "addons": 3,
+        "feet": 114,
+        "type": 134,
+        "body": 114,
+        "legs": 114,
+        "auxType": 43874,
+        "mount": 0,
+        "head": 114
+      },
+      "Lion Warlock": {
+        "addons": 0,
+        "feet": 97,
+        "mount": 0,
+        "body": 97,
+        "type": 1316,
+        "auxType": 0,
+        "legs": 96,
+        "head": 0
+      },
+      "Bel": {
+        "addons": 0,
+        "feet": 89,
+        "type": 156,
+        "body": 42,
+        "legs": 87,
+        "auxType": 0,
+        "mount": 0,
+        "head": 15
+      },
+      "Urmahlullu The Tamed": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 1197,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Smuggler": {
+        "addons": 0,
+        "feet": 115,
+        "legs": 113,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 134,
+        "head": 95
+      },
+      "Destroyer": {
+        "addons": 0,
+        "feet": 0,
+        "type": 236,
+        "body": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Hand Of Cursed Fate": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 230,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Insectoid Worker": {
+        "addons": 0,
+        "feet": 0,
+        "type": 403,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Usurper Archer": {
+        "addons": 2,
+        "feet": 76,
+        "mount": 0,
+        "body": 78,
+        "type": 1316,
+        "auxType": 0,
+        "legs": 76,
+        "head": 76
+      },
+      "Minotaur": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 25,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Stalker": {
+        "addons": 0,
+        "feet": 114,
+        "legs": 95,
+        "body": 116,
+        "mount": 0,
+        "auxType": 0,
+        "type": 128,
+        "head": 78
+      },
+      "Mean Lost Soul": {
+        "addons": 0,
+        "feet": 14,
+        "legs": 14,
+        "body": 14,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1268,
+        "head": 14
+      },
+      "Spider": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 30,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "King Yoyito": {
+        "addons": 0,
+        "feet": 0,
+        "type": 620,
+        "body": 38,
+        "legs": 38,
+        "auxType": 0,
+        "mount": 0,
+        "head": 59
+      },
+      "Usurper Warlock": {
+        "addons": 0,
+        "feet": 95,
+        "mount": 0,
+        "body": 21,
+        "type": 1316,
+        "auxType": 0,
+        "legs": 21,
+        "head": 76
+      },
+      "Dark Magician": {
+        "addons": 2,
+        "feet": 132,
+        "legs": 50,
+        "body": 95,
+        "mount": 0,
+        "auxType": 0,
+        "type": 133,
+        "head": 116
+      },
+      "Wisdom Of Urmahlullu": {
+        "addons": 0,
+        "feet": 19,
+        "mount": 0,
+        "body": 39,
+        "type": 1386,
+        "auxType": 0,
+        "legs": 39,
+        "head": 114
+      },
+      "Afflicted Strider": {
+        "addons": 0,
+        "feet": 0,
+        "type": 1403,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Jovem Audaz": {
+        "addons": 1,
+        "feet": 124,
+        "type": 134,
+        "body": 114,
+        "legs": 114,
+        "auxType": 0,
+        "mount": 0,
+        "head": 95
+      },
+      "Wildness Of Urmahlullu": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 570,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Eyeless Devourer": {
+        "addons": 0,
+        "feet": 0,
+        "type": 1399,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Quinientos De Frijol": {
+        "addons": 0,
+        "feet": 114,
+        "type": 129,
+        "body": 69,
+        "legs": 58,
+        "auxType": 0,
+        "mount": 0,
+        "head": 85
+      },
+      "Falcon Knight": {
+        "addons": 1,
+        "feet": 67,
+        "type": 1071,
+        "auxType": 0,
+        "legs": 76,
+        "body": 75,
+        "mount": 0,
+        "head": 76
+      },
+      "Rp Samu": {
+        "addons": 0,
+        "feet": 114,
+        "type": 134,
+        "body": 114,
+        "legs": 88,
+        "auxType": 0,
+        "mount": 0,
+        "head": 78
+      },
+      "Dark Torturer": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 234,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Salamander": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 529,
+        "head": 0
+      },
+      "Streaked Devourer": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1398,
+        "head": 0
+      },
+      "Lavafungus": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1405,
+        "head": 0
+      },
+      "Arachnophobica": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1135,
+        "head": 0
+      },
+      "Hellhound": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 240,
+        "head": 0
+      },
+      "Falcon Paladin": {
+        "addons": 2,
+        "feet": 67,
+        "type": 1071,
+        "auxType": 0,
+        "legs": 76,
+        "body": 75,
+        "mount": 0,
+        "head": 76
+      },
+      "Bad Thought": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 311,
+        "head": 0
+      },
+      "Ripper Spectre": {
+        "addons": 0,
+        "feet": 94,
+        "legs": 43,
+        "body": 58,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1122,
+        "head": 101
+      },
+      "Rustheap Golem": {
+        "addons": 0,
+        "feet": 0,
+        "type": 603,
+        "body": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Glooth Blob": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 614,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Dark Apprentice": {
+        "addons": 1,
+        "feet": 115,
+        "legs": 95,
+        "body": 57,
+        "mount": 0,
+        "auxType": 0,
+        "type": 133,
+        "head": 78
+      },
+      "Usurper Knight": {
+        "addons": 1,
+        "feet": 95,
+        "mount": 0,
+        "body": 57,
+        "type": 1316,
+        "auxType": 0,
+        "legs": 76,
+        "head": 76
+      },
+      "Vaben Drag": {
+        "addons": 0,
+        "feet": 78,
+        "type": 152,
+        "body": 95,
+        "legs": 114,
+        "auxType": 0,
+        "mount": 0,
+        "head": 21
+      },
+      "Manticore": {
+        "addons": 0,
+        "feet": 20,
+        "mount": 0,
+        "body": 97,
+        "type": 1189,
+        "auxType": 0,
+        "legs": 115,
+        "head": 115
+      },
+      "Centipede": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 124,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Freakish Lost Soul": {
+        "addons": 0,
+        "feet": 123,
+        "legs": 131,
+        "body": 131,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1268,
+        "head": 131
+      },
+      "Grand Master Oberon": {
+        "addons": 1,
+        "feet": 124,
+        "type": 1072,
+        "auxType": 0,
+        "legs": 38,
+        "body": 96,
+        "mount": 0,
+        "head": 76
+      },
+      "Grim Reaper": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 300,
+        "head": 0
+      },
+      "Dragon": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 34,
+        "head": 0
+      },
+      "Souleater": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 355,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Jyn Woo Sung": {
+        "addons": 3,
+        "feet": 114,
+        "mount": 0,
+        "body": 38,
+        "type": 146,
+        "auxType": 0,
+        "legs": 114,
+        "head": 0
+      },
+      "Death Blob": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 315,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Soh Lamento": {
+        "addons": 0,
+        "feet": 114,
+        "legs": 114,
+        "body": 114,
+        "mount": 571,
+        "auxType": 0,
+        "type": 667,
+        "head": 114
+      },
+      "Panda": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 123,
+        "head": 0
+      },
+      "Wasp": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 44,
+        "head": 0
+      },
+      "Glooth Bandit": {
+        "addons": 0,
+        "feet": 114,
+        "mount": 0,
+        "body": 83,
+        "type": 129,
+        "auxType": 0,
+        "legs": 114,
+        "head": 115
+      },
+      "Juggernaut": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 244,
+        "head": 0
+      },
+      "Kollos": {
+        "addons": 0,
+        "feet": 0,
+        "type": 458,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Cave Chimera": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1406,
+        "head": 0
+      },
+      "Spidris": {
+        "addons": 0,
+        "feet": 0,
+        "type": 457,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Gargoyle": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 95,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Lavaworm": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1394,
+        "head": 0
+      },
+      "Monk": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 57,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Serpent Spawn": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 220,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Minotaur Archer": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 24,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Paladinozinho": {
+        "addons": 0,
+        "feet": 114,
+        "type": 128,
+        "body": 69,
+        "legs": 58,
+        "auxType": 0,
+        "mount": 0,
+        "head": 78
+      },
+      "Swampling": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 535,
+        "head": 0
+      },
+      "Tarantula": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 219,
+        "head": 0
+      },
+      "Demon": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 35,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Hydra": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 121,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Ghoul": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 18,
+        "head": 0
+      },
+      "Flimsy Lost Soul": {
+        "addons": 0,
+        "feet": 114,
+        "legs": 27,
+        "body": 27,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1268,
+        "head": 27
+      },
+      "Brain Head": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 32418,
+        "type": 128,
+        "head": 0
+      },
+      "Emerald Damselfly": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 528,
+        "head": 0
+      },
+      "Glooth Brigand": {
+        "addons": 0,
+        "feet": 114,
+        "mount": 0,
+        "body": 90,
+        "type": 137,
+        "auxType": 0,
+        "legs": 128,
+        "head": 114
+      },
+      "Rat": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 21,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Burster Spectre": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 86,
+        "body": 38,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1122,
+        "head": 9
+      },
+      "Giant Spider": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 38,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Cave Rat": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 56,
+        "head": 0
+      },
+      "Earth Elemental": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 301,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Carniphila": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 120,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Pobre Rp": {
+        "addons": 3,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 367,
+        "head": 0
+      },
+      "Skeleton": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 33,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Dragon Lord": {
+        "addons": 0,
+        "feet": 0,
+        "type": 39,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Mito Existe": {
+        "addons": 1,
+        "feet": 114,
+        "type": 130,
+        "body": 114,
+        "legs": 114,
+        "auxType": 0,
+        "mount": 0,
+        "head": 3
+      },
+      "Krett Suvan": {
+        "addons": 1,
+        "feet": 114,
+        "type": 134,
+        "body": 95,
+        "legs": 114,
+        "auxType": 0,
+        "mount": 0,
+        "head": 114
+      },
+      "Glooth Golem": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 600,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Rotworm": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 26,
+        "head": 0
+      },
+      "Terror Bird": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 218,
+        "head": 0
+      },
+      "Perro Culion": {
+        "addons": 3,
+        "feet": 132,
+        "type": 134,
+        "body": 114,
+        "legs": 114,
+        "auxType": 0,
+        "mount": 0,
+        "head": 114
+      },
+      "Poison Spider": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 36,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Banshee": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 78,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Alienjesuserranpopin": {
+        "addons": 0,
+        "feet": 0,
+        "type": 128,
+        "body": 0,
+        "legs": 0,
+        "auxType": 13,
+        "mount": 0,
+        "head": 0
+      },
+      "Bug": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 45,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Medusa": {
+        "addons": 0,
+        "feet": 0,
+        "type": 330,
+        "body": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Bonebeast": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 101,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Cerebellum": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 32572,
+        "type": 128,
+        "head": 0
+      },
+      "Marsh Stalker": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 530,
+        "head": 0
+      },
+      "Braindeath": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 256,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Bat": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 122,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Minotaur Guard": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 29,
+        "head": 0
+      },
+      "Lion Knight": {
+        "addons": 1,
+        "feet": 58,
+        "mount": 0,
+        "body": 116,
+        "type": 1316,
+        "auxType": 0,
+        "legs": 57,
+        "head": 0
+      },
+      "Varnished Diremaw": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1397,
+        "head": 0
+      },
+      "Eternal Guardian": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 345,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Cap Vandyk": {
+        "addons": 0,
+        "feet": 114,
+        "mount": 0,
+        "body": 113,
+        "type": 128,
+        "auxType": 0,
+        "legs": 114,
+        "head": 114
+      },
+      "Ancient Lion Knight": {
+        "addons": 1,
+        "feet": 95,
+        "mount": 0,
+        "body": 78,
+        "type": 1071,
+        "auxType": 0,
+        "legs": 38,
+        "head": 38
+      },
+      "Lion": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 41,
+        "head": 0
+      },
+      "Undead Dragon": {
+        "addons": 0,
+        "feet": 0,
+        "type": 231,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Spitter": {
+        "addons": 0,
+        "feet": 0,
+        "type": 461,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Acid Blob": {
+        "addons": 0,
+        "feet": 0,
+        "type": 314,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Priestess": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 58,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Vampire": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 68,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Alwin": {
+        "addons": 0,
+        "feet": 115,
+        "mount": 0,
+        "auxType": 0,
+        "type": 131,
+        "body": 113,
+        "legs": 113,
+        "head": 113
+      },
+      "Berserker Shadown": {
+        "addons": 2,
+        "feet": 128,
+        "type": 1270,
+        "body": 128,
+        "legs": 95,
+        "auxType": 0,
+        "mount": 1391,
+        "head": 95
+      },
+      "Lich": {
+        "addons": 0,
+        "feet": 0,
+        "type": 99,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Sandcrawler": {
+        "addons": 0,
+        "feet": 0,
+        "type": 350,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Trainer": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1078,
+        "head": 0
+      },
+      "Cyclops": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 22,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Gazer Spectre": {
+        "addons": 0,
+        "feet": 78,
+        "legs": 77,
+        "body": 57,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1122,
+        "head": 94
+      },
+      "Hunter": {
+        "addons": 0,
+        "feet": 115,
+        "mount": 0,
+        "body": 116,
+        "type": 129,
+        "auxType": 0,
+        "legs": 121,
+        "head": 95
+      },
+      "Urmahlullu The Immaculate": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 1197,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Aleikermm": {
+        "addons": 0,
+        "feet": 132,
+        "type": 1808,
+        "body": 114,
+        "legs": 132,
+        "auxType": 3363,
+        "mount": 0,
+        "head": 114
+      },
+      "Wild Warrior": {
+        "addons": 0,
+        "feet": 57,
+        "mount": 0,
+        "body": 57,
+        "type": 131,
+        "auxType": 0,
+        "legs": 57,
+        "head": 57
+      },
+      "Snake": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 28,
+        "head": 0
+      },
+      "Frost Dragon": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 248,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Crawler": {
+        "addons": 0,
+        "feet": 0,
+        "type": 456,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Blackstorn": {
+        "addons": 3,
+        "feet": 114,
+        "type": 970,
+        "body": 114,
+        "legs": 114,
+        "auxType": 0,
+        "mount": 0,
+        "head": 93
+      },
+      "Samuel God": {
+        "addons": 3,
+        "feet": 94,
+        "type": 152,
+        "body": 114,
+        "legs": 114,
+        "auxType": 28722,
+        "mount": 0,
+        "head": 94
+      },
+      "Wolf": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 27,
+        "head": 0
+      },
+      "Ice Golem": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 261,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Metal Gargoyle": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 601,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Waspoid": {
+        "addons": 0,
+        "feet": 0,
+        "type": 462,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Blemished Spawn": {
+        "addons": 0,
+        "feet": 0,
+        "type": 1401,
+        "auxType": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "head": 0
+      },
+      "Demodras": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 204,
+        "head": 0
+      },
+      "Demon Skeleton": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 37,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Dragon Hatchling": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "body": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 271,
+        "head": 0
+      },
+      "Fire Elemental": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 49,
+        "head": 0
+      },
+      "Feral Sphinx": {
+        "addons": 0,
+        "feet": 86,
+        "mount": 0,
+        "body": 75,
+        "type": 1188,
+        "auxType": 0,
+        "legs": 38,
+        "head": 57
+      },
+      "Hellspawn": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 322,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Faceless Bane": {
+        "addons": 0,
+        "feet": 95,
+        "legs": 95,
+        "body": 19,
+        "mount": 0,
+        "auxType": 0,
+        "type": 1119,
+        "head": 19
+      },
+      "Urmahlullu The Weakened": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 1197,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Betrayed Wraith": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 233,
+        "auxType": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Usurper Commander": {
+        "addons": 3,
+        "feet": 76,
+        "mount": 0,
+        "body": 57,
+        "type": 1317,
+        "auxType": 0,
+        "legs": 40,
+        "head": 76
+      },
+      "Water Elemental": {
+        "addons": 0,
+        "feet": 0,
+        "mount": 0,
+        "auxType": 0,
+        "type": 286,
+        "body": 0,
+        "legs": 0,
+        "head": 0
+      },
+      "Satet": {
+        "addons": 3,
+        "feet": 0,
+        "type": 142,
+        "body": 114,
+        "legs": 114,
+        "auxType": 0,
+        "mount": 0,
+        "head": 92
+      },
+      "Massive Fire Elemental": {
+        "addons": 0,
+        "feet": 0,
+        "legs": 0,
+        "auxType": 0,
+        "mount": 0,
+        "body": 0,
+        "type": 242,
+        "head": 0
+      }
+    }
+  },
+  "pvp99HpPotion": {
+    "max": 70,
+    "title": "HP%",
+    "min": 0,
+    "item": 23375,
+    "on": true,
+    "subType": 0
+  },
+  "friendName": "Friend Name",
+  "manaitem2": {
+    "max": 50,
+    "title": "MP%",
+    "subType": 0,
+    "item": 3157,
+    "min": 0,
+    "on": false
+  },
+  "checkVersion": 1790734496,
+  "pvp99ManaPotion": {
+    "max": 35,
+    "title": "MP%",
+    "min": 0,
+    "item": 53164,
+    "on": true,
+    "subType": 0
+  },
+  "hpPotion": {
+    "max": 70,
+    "title": "HP%",
+    "subType": 0,
+    "item": 3160,
+    "min": 0,
+    "on": false
+  },
+  "manaPotion": {
+    "max": 35,
+    "title": "MP%",
+    "subType": 0,
+    "item": 268,
+    "min": 0,
+    "on": false
+  },
+  "manaitem1": {
+    "max": 35,
+    "title": "MP%",
+    "subType": 0,
+    "item": 53164,
+    "min": 0,
+    "on": true
+  },
+  "hpitem2": {
+    "max": 50,
+    "title": "HP%",
+    "subType": 0,
+    "item": 3160,
+    "min": 0,
+    "on": false
+  },
+  "autoTradeMessage": "script 100% by pvp99",
+  "friend1Name": "Friend Name",
+  "extras": {
+    "rope": 3003,
+    "pathfinding": true,
+    "bless": true,
+    "machete": 9596,
+    "looting": 39,
+    "highlightTarget": true,
+    "gotoMaxDistance": 30,
+    "stake": false,
+    "holdMwall": true,
+    "checkPlayer": false,
+    "separatePm": false,
+    "suppliesControl": false,
+    "killUnder": 1,
+    "joinBot": false,
+    "lootLast": true,
+    "holdMwHot": "F5",
+    "scythe": 9596,
+    "shovel": 3457,
+    "reachable": false,
+    "talkDelay": 1000,
+    "autoOpenDoors": false,
+    "holdWgHot": "F6",
+    "nextBackpack": true,
+    "oberon": false,
+    "huntRoutes": 50,
+    "antiKick": true,
+    "title": true,
+    "lootDelay": 270,
+    "useAll": "space",
+    "reUse": false,
+    "height": 360,
+    "timers": true
+  },
+  "_macros": {
+    "": false,
+    "EK Rotacao": true,
+    "ExetaIfPlayer": true,
+    "Tranformar dinheiro": true,
+    "PVP99 NPC": true,
+    "Use Potions": true,
+    "Exeta when low hp": true,
+    "Comer Comida": true,
+    "Stack items": true,
+    "AntRedskull": true,
+    "Monster HP %": true,
+    "Task Detect": true,
+    "Exchange money": true,
+    "teste": false,
+    "Task": false,
+    "Tasker": true
+  },
+  "autoEquip": [
+    {
+      "item1": 3052,
+      "title": "Auto Equip",
+      "item2": 3089,
+      "on": false,
+      "slot": 9
+    },
+    {
+      "item1": 0,
+      "title": "Auto Equip",
+      "item2": 0,
+      "on": false,
+      "slot": 0
+    }
+  ],
+  "dropper": {
+    "enabled": false,
+    "trashItems": [
+      {
+        "id": 9057,
+        "count": 1
+      },
+      {
+        "id": 3033,
+        "count": 1
+      },
+      {
+        "id": 3032,
+        "count": 1
+      },
+      {
+        "id": 3038,
+        "count": 1
+      },
+      {
+        "id": 3030,
+        "count": 1
+      },
+      {
+        "id": 239,
+        "count": 1
+      },
+      {
+        "id": 281,
+        "count": 0
+      },
+      {
+        "id": 238,
+        "count": 1
+      }
+    ],
+    "useItems": [
+      {
+        "count": 1,
+        "id": 21203
+      },
+      {
+        "count": 1,
+        "id": 14758
+      }
+    ],
+    "capItems": [
+      {
+        "count": 1,
+        "id": 21175
+      }
+    ]
+  },
+  "cityTravel": {
+    "enabled": false
+  },
+  "autoWave": {
+    "spell": "exevo vis lux",
+    "maxDist": "5"
+  },
+  "caveBot": {
+    "backOffline": false,
+    "backTrainers": false,
+    "forceRefill": false,
+    "backStop": false
+  },
+  "cavebotSell": [
+    {
+      "id": 23544,
+      "count": 1
+    },
+    {
+      "id": 3081,
+      "count": 1
+    },
+    {
+      "id": 14079,
+      "count": 1
+    },
+    {
+      "id": 14081,
+      "count": 1
+    },
+    {
+      "id": 14087,
+      "count": 1
+    },
+    {
+      "id": 17458,
+      "count": 1
+    },
+    {
+      "id": 17823,
+      "count": 1
+    },
+    {
+      "id": 9694,
+      "count": 1
+    },
+    {
+      "id": 10309,
+      "count": 0
+    }
+  ],
+  "Potions Use: ST": {
+    "mpPercent": 25,
+    "potionId": 23375,
+    "enabled": false,
+    "mpPotionId": 237,
+    "hppercent": 70
+  },
+  "afkMsg": "Script by pvp99",
+  "bestHit": 2575,
+  "customMessageAlert": "Insert Text Here",
+  "healing1": {
+    "max": 90,
+    "title": "HP%",
+    "on": true,
+    "min": 1,
+    "text": "exura ico"
+  },
+  "_configs": {
+    "targetbot_configs": {
+      "selected": "Guzzlemaw",
+      "enabled": false
+    },
+    "cavebot_configs": {
+      "selected": "Bloco1",
+      "enabled": false
+    }
+  },
+  "_icons": {
+    "spellIconflam": {
+      "y": 0.15265486725664,
+      "x": 0.70790378006873,
+      "enabled": false
+    },
+    "(RP) PvP": {
+      "y": 0.08675799086758,
+      "x": 0.15185950413223,
+      "enabled": false
+    },
+    "MP": {
+      "y": 0.65,
+      "x": 0.01,
+      "enabled": false
+    },
+    "runeIconlize": {
+      "y": 0.64299802761341,
+      "x": 0.98109965635739,
+      "enabled": false
+    },
+    "spellIconm-flam": {
+      "y": 0.14823008849558,
+      "x": 0.30756013745704,
+      "enabled": false
+    },
+    "ekAureraRotation": {
+      "y": 0.25,
+      "x": 0.11,
+      "enabled": true
+    },
+    "spellIconM-San": {
+      "y": 0.0059171597633136,
+      "x": 0.79209621993127,
+      "enabled": false
+    },
+    "cI": {
+      "y": 0.20169252468265,
+      "x": 0.37483085250338
+    },
+    "spellIconExori": {
+      "y": 0.45,
+      "x": 0.11,
+      "enabled": false
+    },
+    "spellIconm-frigo": {
+      "y": 0.15044247787611,
+      "x": 0.12714776632302,
+      "enabled": false
+    },
+    "BuffIconRP Haste": {
+      "y": 0.05,
+      "x": 0.41,
+      "enabled": false
+    },
+    "spellIconM-Flam": {
+      "y": 0.99211045364892,
+      "x": 0.83161512027491,
+      "enabled": false
+    },
+    "peted": {
+      "y": 0.17757009345794,
+      "x": 0.0017182130584192,
+      "enabled": false
+    },
+    "monkpk": {
+      "y": 0.1055634807418,
+      "x": 0.42692828146143,
+      "enabled": false
+    },
+    "spellIcone-vis": {
+      "y": 1,
+      "x": 0.61683848797251,
+      "enabled": false
+    },
+    "exori1": {
+      "y": 0.18830242510699,
+      "x": 0.52029769959405,
+      "enabled": false
+    },
+    "HP": {
+      "y": 0.45,
+      "x": 0.01,
+      "enabled": false
+    },
+    "AtkAll": {
+      "y": 0.25,
+      "x": 0.01,
+      "enabled": false
+    },
+    "ekAureraAttack": {
+      "y": 0.85,
+      "x": 0.01
+    },
+    "tI": {
+      "y": 0.20169252468265,
+      "x": 0.32408660351827
+    },
+    "monk": {
+      "y": 0.11126961483595,
+      "x": 0.47564276048714,
+      "enabled": false
+    },
+    "CUSS": {
+      "y": 0,
+      "x": 0.99070247933884,
+      "enabled": false
+    },
+    "greaM": {
+      "y": 0.97009345794393,
+      "x": 0.31099656357388,
+      "enabled": false
+    },
+    "AVA": {
+      "y": 0.005607476635514,
+      "x": 0.2319587628866,
+      "enabled": false
+    },
+    "SAVA": {
+      "y": 0.011214953271028,
+      "x": 0.16323024054983,
+      "enabled": false
+    },
+    "Co": {
+      "y": 0.05,
+      "x": 0.01,
+      "enabled": false
+    },
+    "grea": {
+      "y": 0.97383177570093,
+      "x": 0.2233676975945,
+      "enabled": false
+    },
+    "spellIconvis": {
+      "y": 0.14380530973451,
+      "x": 0.47766323024055,
+      "enabled": false
+    },
+    "spellIconE-Con": {
+      "y": 0.05,
+      "x": 0.11,
+      "enabled": false
+    },
+    "runeIconP-MAX": {
+      "y": 0.9861932938856,
+      "x": 0.2319587628866,
+      "enabled": false
+    },
+    "spellIconM-Frigo": {
+      "y": 0.99408284023669,
+      "x": 0.74226804123711,
+      "enabled": false
+    },
+    "spellIconExori Hur": {
+      "y": 0.25,
+      "x": 0.11,
+      "enabled": false
+    },
+    "BuffIconBuffEK": {
+      "y": 0.85,
+      "x": 0.41,
+      "enabled": false
+    },
+    "BuffIconBuffRP": {
+      "y": 0.65,
+      "x": 0.41,
+      "enabled": false
+    },
+    "great": {
+      "y": 0.97196261682243,
+      "x": 0.40034364261168,
+      "enabled": true
+    },
+    "FB": {
+      "y": 0.013084112149533,
+      "x": 0.30927835051546,
+      "enabled": false
+    },
+    "BuffIconEK Haste": {
+      "y": 0.10866752910737,
+      "x": 0.96684709066306,
+      "enabled": false
+    },
+    "petms": {
+      "y": 0.30280373831776,
+      "x": 0.075601374570447,
+      "enabled": false
+    },
+    "pet": {
+      "y": 0.17943925233645,
+      "x": 0.077319587628866,
+      "enabled": false
+    },
+    "CUR": {
+      "y": 0.11415525114155,
+      "x": 0.015495867768595,
+      "enabled": false
+    },
+    "exori": {
+      "y": 0.18402282453638,
+      "x": 0.56156968876861,
+      "enabled": true
+    },
+    "runeIconava": {
+      "y": 0.11439842209073,
+      "x": 0.97766323024055,
+      "enabled": false
+    },
+    "spellIconM-Vis": {
+      "y": 0.99211045364892,
+      "x": 1,
+      "enabled": false
+    },
+    "spellIconM-Tera": {
+      "y": 0.99211045364892,
+      "x": 0.91752577319588,
+      "enabled": false
+    },
+    "morrer": {
+      "y": 0.18259629101284,
+      "x": 0.42895805142084,
+      "enabled": false
+    },
+    "spellIconE-San": {
+      "y": 0.0019723865877712,
+      "x": 0.5893470790378,
+      "enabled": false
+    },
+    "petek": {
+      "y": 0.30280373831776,
+      "x": 0,
+      "enabled": false
+    },
+    "runeIconSDMAX": {
+      "y": 0.9861932938856,
+      "x": 0.15463917525773,
+      "enabled": false
+    },
+    "spellIconm-vis": {
+      "y": 0.14380530973451,
+      "x": 0.21649484536082,
+      "enabled": false
+    },
+    "exevo": {
+      "y": 0.11412268188302,
+      "x": 0.55818673883627,
+      "enabled": false
+    },
+    "spellIconm-tera": {
+      "y": 0.14380530973451,
+      "x": 0.39347079037801,
+      "enabled": false
+    },
+    "SD": {
+      "y": 0.0093457943925234,
+      "x": 0.46219931271478,
+      "enabled": false
+    },
+    "runeIconGFB": {
+      "y": 0.99013806706114,
+      "x": 0.073883161512027,
+      "enabled": false
+    },
+    "BuffIconUtamo": {
+      "y": 0.10478654592497,
+      "x": 0.93504736129905,
+      "enabled": false
+    },
+    "spellIconE-Frigo": {
+      "y": 0.99211045364892,
+      "x": 0.64776632302406,
+      "enabled": false
+    },
+    "player": {
+      "y": 0.18432510885341,
+      "x": 0.47564276048714,
+      "enabled": false
+    },
+    "spellIconE-Tera": {
+      "y": 0.98816568047337,
+      "x": 0.46219931271478,
+      "enabled": false
+    },
+    "palas": {
+      "y": 0,
+      "x": 0.87913223140496,
+      "enabled": false
+    },
+    "spellIconE-flam": {
+      "y": 0.99211045364892,
+      "x": 0.55841924398625,
+      "enabled": false
+    },
+    "spellIconE-Vis": {
+      "y": 0.98624484181568,
+      "x": 0.29905277401894,
+      "enabled": false
+    },
+    "heals": {
+      "y": 0.11187214611872,
+      "x": 0.080578512396694,
+      "enabled": false
+    },
+    "holdIcon": {
+      "y": 0.05,
+      "x": 0.01,
+      "enabled": false
+    },
+    "TargetBotIcon": {
+      "y": 0.232741617357,
+      "x": 0.28522336769759,
+      "enabled": false
+    },
+    "spellIcone-tera": {
+      "y": 0,
+      "x": 0.96219931271478,
+      "enabled": false
+    },
+    "BuffIconS-Haste": {
+      "y": 0.85,
+      "x": 0.31,
+      "enabled": false
+    },
+    "spellIcontera": {
+      "y": 0.15044247787611,
+      "x": 0.78865979381443,
+      "enabled": false
+    },
+    "runeIcongb": {
+      "y": 0.3767258382643,
+      "x": 0.98109965635739,
+      "enabled": false
+    },
+    "stro": {
+      "y": 0.96822429906542,
+      "x": 0.59106529209622,
+      "enabled": true
+    },
+    "spellIconmort": {
+      "y": 0.14380530973451,
+      "x": 0.553264604811,
+      "enabled": false
+    },
+    "runeIconsd": {
+      "y": 0.24457593688363,
+      "x": 0.97938144329897,
+      "enabled": false
+    },
+    "CaveBotIcon": {
+      "y": 0.23471400394477,
+      "x": 0.62886597938144,
+      "enabled": false
+    },
+    "BuffIconHaste": {
+      "y": 0.65,
+      "x": 0.31,
+      "enabled": false
+    },
+    "runeIconAVA": {
+      "y": 0.9861932938856,
+      "x": 0.0017182130584192,
+      "enabled": false
+    },
+    "THU": {
+      "y": 0.50493096646943,
+      "x": 0.98281786941581,
+      "enabled": false
+    },
+    "strom": {
+      "y": 0.97009345794393,
+      "x": 0.50343642611684,
+      "enabled": false
+    },
+    "spellIconExori Gran": {
+      "y": 0.65,
+      "x": 0.11,
+      "enabled": false
+    },
+    "ekAureraDefense": {
+      "y": 0.05,
+      "x": 0.11
+    },
+    "spellIconfrigo": {
+      "y": 0.14823008849558,
+      "x": 0.62714776632302,
+      "enabled": false
+    },
+    "hpmacro": {
+      "y": 0.05,
+      "x": 0.01,
+      "enabled": false
+    }
+  },
+  "EquipperPanel": {
+    "enabled": false,
+    "bosses": [
+
+    ],
+    "rules": [
+
+    ]
+  },
+  "ekAureraV1": {
+    "bashWords": "exori ico scu",
+    "gap": 2100,
+    "bashRange": 1,
+    "slamCD": 6,
+    "slamLevel": 30,
+    "slamWords": "exori scu",
+    "bashOn": true,
+    "bashLevel": 18,
+    "bashMana": 30,
+    "slamOn": true,
+    "shieldSpells": true,
+    "slamMana": 110,
+    "bashCD": 4,
+    "slamRange": 1
+  },
+  "foodItems": [
+    {
+      "id": 3582,
+      "count": 1
+    },
+    {
+      "id": 3577,
+      "count": 1
+    },
+    {
+      "id": 3607,
+      "count": 1
+    },
+    {
+      "id": 3585,
+      "count": 1
+    },
+    {
+      "id": 3592,
+      "count": 1
+    },
+    {
+      "id": 3600,
+      "count": 1
+    },
+    {
+      "id": 3601,
+      "count": 1
+    },
+    {
+      "id": 3725,
+      "count": 100
+    },
+    {
+      "id": 17457,
+      "count": 1
+    },
+    {
+      "id": 8014,
+      "count": 1
+    },
+    {
+      "id": 3732,
+      "count": 1
+    },
+    {
+      "id": 21143,
+      "count": 1
+    }
+  ],
+  "moneyItems": [
+    {
+      "count": 1,
+      "id": 3031
+    },
+    {
+      "count": 1,
+      "id": 3035
+    },
+    {
+      "count": 1,
+      "id": 3043
+    }
+  ],
+  "alarms": {
+    "privateMsg": [
+
+    ],
+    "customMessage": {
+      "value": ""
+    },
+    "flashClient": [
+
+    ],
+    "lowMana": {
+      "value": 20
+    },
+    "creatureDetected": [
+
+    ],
+    "damageTaken": [
+
+    ],
+    "playerAttack": {
+      "enabled": false
+    },
+    "ignoreFriends": [
+
+    ],
+    "defaultMsg": [
+
+    ],
+    "creatureName": {
+      "value": ""
+    },
+    "enabled": false,
+    "lowHealth": {
+      "value": 20
+    },
+    "playerDetected": {
+      "enabled": true
+    }
+  },
+  "playerList": {
+    "enemyList": [
+
+    ],
+    "outfits": false,
+    "friendList": [
+
+    ],
+    "blackList": [
+
+    ],
+    "highlight": false,
+    "marks": false,
+    "groupMembers": true
+  },
+  "taskFinalizada": false,
+  "renameContainers": {
+    "sort": true,
+    "forceOpen": true,
+    "list": [
+      {
+        "items": [
+          {
+            "count": 1,
+            "id": 3003
+          },
+          {
+            "count": 1,
+            "id": 16277
+          },
+          {
+            "count": 1,
+            "id": 3457
+          }
+        ],
+        "value": "Main Backpack",
+        "enabled": true,
+        "min": false,
+        "item": 37536
+      },
+      {
+        "items": [
+          {
+            "id": 3370,
+            "count": 1
+          },
+          {
+            "id": 814,
+            "count": 1
+          },
+          {
+            "id": 3436,
+            "count": 1
+          },
+          {
+            "id": 3392,
+            "count": 1
+          },
+          {
+            "id": 3369,
+            "count": 1
+          },
+          {
+            "id": 3079,
+            "count": 1
+          },
+          {
+            "id": 3381,
+            "count": 1
+          },
+          {
+            "id": 8052,
+            "count": 1
+          },
+          {
+            "id": 811,
+            "count": 1
+          },
+          {
+            "id": 812,
+            "count": 1
+          }
+        ],
+        "value": "loot",
+        "enabled": true,
+        "min": false,
+        "item": 2854
+      },
+      {
+        "items": [
+          {
+            "count": 1,
+            "id": 237
+          },
+          {
+            "count": 1,
+            "id": 23375
+          }
+        ],
+        "value": "potion",
+        "enabled": true,
+        "min": false,
+        "item": 2868
+      },
+      {
+        "items": [
+          {
+            "id": 3031,
+            "count": 1
+          },
+          {
+            "id": 3035,
+            "count": 1
+          },
+          {
+            "id": 3043,
+            "count": 1
+          },
+          {
+            "id": 16120,
+            "count": 1
+          },
+          {
+            "id": 16125,
+            "count": 2
+          },
+          {
+            "id": 36779,
+            "count": 2
+          },
+          {
+            "id": 36790,
+            "count": 3
+          },
+          {
+            "id": 16119,
+            "count": 1
+          },
+          {
+            "id": 36778,
+            "count": 1
+          },
+          {
+            "id": 36780,
+            "count": 1
+          },
+          {
+            "id": 3036,
+            "count": 4
+          },
+          {
+            "id": 36789,
+            "count": 2
+          },
+          {
+            "id": 36775,
+            "count": 2
+          },
+          {
+            "id": 36776,
+            "count": 2
+          },
+          {
+            "id": 9057,
+            "count": 4
+          },
+          {
+            "id": 21103,
+            "count": 2
+          },
+          {
+            "id": 5880,
+            "count": 5
+          }
+        ],
+        "value": "joias",
+        "item": 2871,
+        "enabled": true,
+        "min": false,
+        "openNext": true
+      },
+      {
+        "items": [
+
+        ],
+        "value": "Main Backpack",
+        "enabled": true,
+        "min": false,
+        "item": 25780
+      },
+      {
+        "items": [
+
+        ],
+        "value": "Main Backpack",
+        "enabled": true,
+        "min": false,
+        "item": 10326
+      }
+    ],
+    "purse": false,
+    "enabled": false,
+    "height": 170,
+    "lootBag": false
+  },
+  "bestHeal": 3258,
+  "healing3": {
+    "max": 70,
+    "title": "HP%",
+    "on": false,
+    "min": 0,
+    "text": "exura gran san"
+  }
+}
