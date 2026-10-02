@@ -1,7 +1,7 @@
 -- ============================================================
--- PVP99 BOT MANAGER V12 MULTIPLAS KEYS + SCROLL
+-- PVP99 BOT MANAGER V13 MULTIPLAS KEYS + EXPIRACAO AUTOMATICA
 -- Firebase Auth + chave de liberacao + 1 instalacao por chave
--- Painel gratuito / downloads liberados por produto
+-- Teste/planos temporarios: remove a pasta do bot ao expirar
 -- ============================================================
 
 local FIREBASE_API_KEY = "AIzaSyBlYZxdTlLeVYmnvX0bkwISq3OzEuxNIdU"
@@ -304,10 +304,54 @@ local function setLicenseStatus(text, color)
   if color then licenseStatus:setColor(color) end
 end
 
-local function formatExpiryDate(expiresAt)
-  expiresAt = tonumber(expiresAt) or 0
+local function getBindingActivatedAt(license)
+  if type(license) ~= "table" or type(license.binding) ~= "table" then
+    return 0
+  end
+
+  for _, binding in pairs(license.binding) do
+    if type(binding) == "table" then
+      local activatedAt = tonumber(binding.activatedAt) or 0
+      if activatedAt > 0 then
+        return activatedAt
+      end
+    end
+  end
+
+  return 0
+end
+
+-- Compatibilidade:
+-- 1) keys antigas podem usar expiresAt absoluto;
+-- 2) keys novas usam validitySeconds e comecam na primeira ativacao.
+local function effectiveExpiry(license)
+  if type(license) ~= "table" then
+    return 0
+  end
+
+  local absolute = tonumber(license.expiresAt) or 0
+  if absolute > 0 then
+    return absolute
+  end
+
+  local duration = tonumber(license.validitySeconds) or 0
+  local activatedAt = getBindingActivatedAt(license)
+
+  if duration > 0 and activatedAt > 0 then
+    return activatedAt + duration
+  end
+
+  return 0
+end
+
+local function formatExpiryDate(license)
+  local expiresAt = effectiveExpiry(license)
 
   if expiresAt <= 0 then
+    local duration = tonumber(type(license) == "table" and license.validitySeconds or 0) or 0
+    if duration > 0 then
+      return "TEMPO INICIA NA ATIVACAO"
+    end
     return "USO: PERMANENTE"
   end
 
@@ -318,14 +362,19 @@ local function formatExpiryDate(expiresAt)
     return "LICENCA EXPIRADA"
   end
 
-  local days = math.ceil(remaining / 86400)
+  if remaining < 86400 then
+    local hours = math.floor(remaining / 3600)
+    local minutes = math.floor((remaining % 3600) / 60)
+    local seconds = math.floor(remaining % 60)
 
-  if days <= 1 then
-    if os.date then
-      return "EXPIRA EM 1 DIA - " .. os.date("%d/%m/%Y", expiresAt)
+    if hours > 0 then
+      return string.format("EXPIRA EM %02d:%02d:%02d", hours, minutes, seconds)
     end
-    return "EXPIRA EM 1 DIA"
+
+    return string.format("EXPIRA EM %02d:%02d", minutes, seconds)
   end
+
+  local days = math.ceil(remaining / 86400)
 
   if os.date then
     return "EXPIRA EM " .. days .. " DIAS - " .. os.date("%d/%m/%Y", expiresAt)
@@ -496,6 +545,64 @@ local function isInstalled(folder)
     and g_resources.fileExists(installMarker(folder))
 end
 
+-- Remove SOMENTE uma pasta filha direta de /bot.
+local function safeBotFolder(folder)
+  if type(folder) ~= "string" then return nil end
+
+  folder = folder:gsub("^%s+", ""):gsub("%s+$", "")
+
+  if folder == "" or folder == "." or folder == ".." then
+    return nil
+  end
+
+  if folder:find("..", 1, true)
+    or folder:find("/", 1, true)
+    or folder:find("\\", 1, true) then
+    return nil
+  end
+
+  return folder
+end
+
+local function deleteProductFolder(productId)
+  local entry = products[productId]
+
+  if type(entry) ~= "table" then
+    print("[PVP99] Nao foi possivel limpar " .. tostring(productId) .. ": produto ausente.")
+    return false
+  end
+
+  local folder = safeBotFolder(entry.folder)
+
+  if not folder then
+    print("[PVP99] Pasta invalida para limpeza: " .. tostring(entry.folder))
+    return false
+  end
+
+  local path = "/bot/" .. folder
+
+  if not g_resources.directoryExists(path) then
+    return true
+  end
+
+  local ok, result = pcall(function()
+    return g_resources.deleteFile(path)
+  end)
+
+  if not ok then
+    print("[PVP99] Erro ao apagar " .. path .. ": " .. tostring(result))
+    return false
+  end
+
+  if g_resources.directoryExists(path) then
+    print("[PVP99] A pasta ainda existe apos a tentativa de limpeza: " .. path)
+    return false
+  end
+
+  print("[PVP99] Licenca expirada. Pasta removida: " .. path)
+  return true
+end
+
 local function priceText(price)
   local value = tonumber(price) or 65
   return string.format("R$ %.2f", value):gsub("%.", ",")
@@ -518,9 +625,9 @@ end
 local function licenseExpired(license)
   if type(license) ~= "table" then return true end
 
-  local expiresAt = tonumber(license.expiresAt) or 0
+  local expiresAt = effectiveExpiry(license)
 
-  if expiresAt == 0 then
+  if expiresAt <= 0 then
     return false
   end
 
@@ -558,7 +665,7 @@ local function getProductLicenseInfo(productId)
   local license = activeLicenses[productId]
 
   if type(license) == "table" and productAllowed(productId) then
-    return formatExpiryDate(license.expiresAt), "#64ffb5"
+    return formatExpiryDate(license), "#64ffb5"
   end
 
   local state = licenseStates[productId]
@@ -859,7 +966,30 @@ local function clearProductLicense(productId, state)
   activeLicenses[productId] = nil
   activeLicenseKeys[productId] = nil
   licenseStates[productId] = state
-  refreshRows()
+
+  if window then
+    refreshRows()
+  end
+end
+
+local function expireProductLicense(productId, license, silent)
+  local removed = deleteProductFolder(productId)
+  clearProductLicense(productId, "expired")
+
+  if not silent and window then
+    setLicenseStatus("EXPIRADA", "#ff6b8a")
+
+    local productName = productId
+    if type(products[productId]) == "table" and products[productId].name then
+      productName = tostring(products[productId].name)
+    end
+
+    if removed then
+      setStatus(productName .. " EXPIRADO - PASTA REMOVIDA", "#ff6b8a")
+    else
+      setStatus(productName .. " EXPIRADO - VERIFIQUE A PASTA LOCAL", "#ff6b8a")
+    end
+  end
 end
 
 local function checkLicense(key, allowBind, silent)
@@ -926,11 +1056,8 @@ local function checkLicense(key, allowBind, silent)
     end
 
     if licenseExpired(license) then
-      clearProductLicense(productId, "expired")
-      if not silent then
-        setLicenseStatus("EXPIRADA", "#ff6b8a")
-        setStatus("LICENCA EXPIRADA", "#ff6b8a")
-      end
+      -- Se expirou enquanto o cliente estava fechado, limpa na proxima abertura.
+      expireProductLicense(productId, license, silent)
       return
     end
 
@@ -1075,7 +1202,7 @@ local function authenticateDevice(done)
         print("[PVP99] Auth error: " .. tostring(signupErr or err))
         setStatus("ERRO NA AUTENTICACAO FIREBASE", "#ff6b8a")
         setLicenseStatus("OFFLINE", "#ff6b8a")
-        refreshExpiryInfo()
+        refreshLicenseSummary()
         return
       end
 
@@ -1083,6 +1210,31 @@ local function authenticateDevice(done)
       done()
     end)
   end)
+end
+
+-- Verifica a cada 1 segundo.
+-- Teste de 5 minutos e demais planos temporarios usam a mesma regra.
+local function monitorLicenseExpirations()
+  local expiredProducts = {}
+
+  for productId, license in pairs(activeLicenses) do
+    if type(license) == "table" and licenseExpired(license) then
+      table.insert(expiredProducts, {
+        productId = productId,
+        license = license
+      })
+    end
+  end
+
+  for _, item in ipairs(expiredProducts) do
+    expireProductLicense(item.productId, item.license, false)
+  end
+
+  if #expiredProducts == 0 and window then
+    refreshRows()
+  end
+
+  schedule(1000, monitorLicenseExpirations)
 end
 
 if activateButton then
@@ -1095,8 +1247,8 @@ end
 if closeButton then
   closeButton.onClick = function()
     if window then
-      window:destroy()
-      window = nil
+      -- Esconde o painel e mantem o monitor de expiracao ativo.
+      window:hide()
     end
   end
 end
@@ -1111,3 +1263,5 @@ authenticateDevice(function()
     loadSavedLicenses()
   end)
 end)
+
+monitorLicenseExpirations()
