@@ -1,0 +1,113 @@
+{
+  "looting": {
+    "items": [
+      {
+        "count": 1,
+        "id": 10384
+      },
+      {
+        "count": 1,
+        "id": 10409
+      },
+      {
+        "count": 1,
+        "id": 3028
+      },
+      {
+        "count": 1,
+        "id": 10386
+      },
+      {
+        "count": 1,
+        "id": 11673
+      },
+      {
+        "count": 1,
+        "id": 10387
+      },
+      {
+        "count": 1,
+        "id": 10410
+      },
+      {
+        "count": 1,
+        "id": 3031
+      },
+      {
+        "count": 1,
+        "id": 10385
+      }
+    ],
+    "maxDanger": 5,
+    "minCapacity": 100,
+    "containers": [
+      {
+        "count": 1,
+        "id": 2854
+      }
+    ],
+    "everyItem": false
+  },
+  "targeting": [
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 1,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^lizard chosen$|^death blob$|^lizard high guard$|^dragon hatchling$|^mutated tiger$|^mutated bat$|^mutated rat$",
+      "dynamicLureDelay": false,
+      "priority": 1,
+      "dynamicLure": false,
+      "keepDistance": false,
+      "danger": 1,
+      "chase": true,
+      "keepDistanceRange": 2,
+      "lure": false,
+      "closeLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Lizard Chosen, Death Blob, Lizard High Guard, Dragon Hatchling, mutated tiger, Mutated Bat, Mutated Rat",
+      "rpSafe": false
+    },
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 1,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^trainer$",
+      "chase": true,
+      "priority": 1,
+      "keepDistance": false,
+      "closeLure": false,
+      "danger": 1,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "dynamicLureDelay": false,
+      "dynamicLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Trainer",
+      "rpSafe": false
+    }
+  ]
+}
