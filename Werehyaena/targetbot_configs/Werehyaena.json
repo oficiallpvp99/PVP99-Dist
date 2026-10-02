@@ -1,0 +1,75 @@
+{
+  "looting": {
+    "items": [
+      {
+        "count": 6,
+        "id": 3033
+      },
+      {
+        "count": 3,
+        "id": 16122
+      },
+      {
+        "count": 1,
+        "id": 3067
+      },
+      {
+        "count": 1,
+        "id": 8092
+      },
+      {
+        "count": 1,
+        "id": 8094
+      },
+      {
+        "count": 8,
+        "id": 677
+      },
+      {
+        "count": 1,
+        "id": 16123
+      }
+    ],
+    "maxDanger": 10,
+    "minCapacity": 100,
+    "containers": [
+      {
+        "count": 1,
+        "id": 2854
+      }
+    ],
+    "everyItem": false
+  },
+  "targeting": [
+    {
+      "lureDelay": 250,
+      "lureMin": 1,
+      "maxDistance": 10,
+      "anchorRange": 3,
+      "lureCount": 1,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 3,
+      "regex": "^werehyaena$|^werehyaena shaman$",
+      "chase": true,
+      "priority": 1,
+      "keepDistance": false,
+      "closeLure": false,
+      "danger": 1,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "dynamicLureDelay": false,
+      "dynamicLure": false,
+      "faceMonster": true,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Werehyaena,Werehyaena Shaman",
+      "rpSafe": false
+    }
+  ]
+}
