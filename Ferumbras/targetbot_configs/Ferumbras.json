@@ -1,0 +1,183 @@
+{
+  "looting": {
+    "items": [
+      {
+        "count": 1,
+        "id": 3420
+      },
+      {
+        "count": 1,
+        "id": 3281
+      },
+      {
+        "count": 1,
+        "id": 3320
+      },
+      {
+        "count": 1,
+        "id": 3035
+      },
+      {
+        "count": 1,
+        "id": 7418
+      },
+      {
+        "count": 1,
+        "id": 9057
+      },
+      {
+        "count": 1,
+        "id": 3028
+      },
+      {
+        "count": 1,
+        "id": 282
+      },
+      {
+        "count": 1,
+        "id": 3030
+      },
+      {
+        "count": 1,
+        "id": 22730
+      },
+      {
+        "count": 1,
+        "id": 3032
+      },
+      {
+        "count": 1,
+        "id": 3033
+      },
+      {
+        "count": 1,
+        "id": 7382
+      },
+      {
+        "count": 1,
+        "id": 3360
+      },
+      {
+        "count": 1,
+        "id": 22726
+      },
+      {
+        "count": 1,
+        "id": 22866
+      },
+      {
+        "count": 1,
+        "id": 22727
+      },
+      {
+        "count": 1,
+        "id": 3063
+      },
+      {
+        "count": 1,
+        "id": 22728
+      },
+      {
+        "count": 1,
+        "id": 8082
+      },
+      {
+        "count": 1,
+        "id": 8094
+      },
+      {
+        "count": 1,
+        "id": 3414
+      },
+      {
+        "count": 1,
+        "id": 3364
+      },
+      {
+        "count": 1,
+        "id": 3366
+      },
+      {
+        "count": 1,
+        "id": 22867
+      },
+      {
+        "count": 1,
+        "id": 3554
+      },
+      {
+        "count": 1,
+        "id": 3048
+      },
+      {
+        "count": 1,
+        "id": 7414
+      },
+      {
+        "count": 1,
+        "id": 7413
+      },
+      {
+        "count": 1,
+        "id": 7388
+      },
+      {
+        "count": 1,
+        "id": 9058
+      },
+      {
+        "count": 4,
+        "id": 6499
+      },
+      {
+        "count": 1,
+        "id": 5954
+      },
+      {
+        "count": 3,
+        "id": 3731
+      }
+    ],
+    "maxDanger": 10,
+    "minCapacity": 100,
+    "containers": [
+      {
+        "count": 1,
+        "id": 2854
+      }
+    ],
+    "everyItem": false
+  },
+  "targeting": [
+    {
+      "lureDelay": 250,
+      "lureMin": 2,
+      "maxDistance": 10,
+      "anchorRange": 4,
+      "lureCount": 2,
+      "avoidAttacks": false,
+      "rePositionAmount": 5,
+      "lureMax": 2,
+      "regex": "^grimeleech$|^hellflayer$|^vexclaw$|^demon$",
+      "chase": true,
+      "priority": 1,
+      "keepDistance": false,
+      "closeLure": false,
+      "danger": 1,
+      "keepDistanceRange": 1,
+      "lure": false,
+      "dynamicLureDelay": false,
+      "dynamicLure": false,
+      "faceMonster": false,
+      "lureCavebot": false,
+      "dontLoot": false,
+      "diamondArrows": false,
+      "delayFrom": 2,
+      "anchor": false,
+      "closeLureAmount": 3,
+      "rePosition": false,
+      "name": "Grimeleech,Hellflayer,Vexclaw,Demon",
+      "rpSafe": false
+    }
+  ]
+}
